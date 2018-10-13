@@ -1,0 +1,61 @@
+{{define "root"}}
+	<html>
+		<head>
+			<title>{{.Doc.Title}} - Sourcegraph</title>
+			<link rel="stylesheet" type="text/css" href="{{asset "layout.css"}}?1" />
+			<link rel="stylesheet" type="text/css" href="{{asset "content.css"}}?1" />
+			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		</head>
+		<body>
+			<header id="header">
+				<div class="container">
+					<a href="/" id="logo"><img src="{{asset "sourcegraph-logo.svg"}}" /> <span aria-hidden="true" class="visible-sm">Docs</span> <span class="visible-lg">Documentation</span></a>
+					<nav>
+						<a href="https://github.com/sourcegraph/sourcegraph">Code</a>
+						<a href="https://about.sourcegraph.com">About</a>
+						<a href="https://sourcegraph.com">Sourcegraph.com</a>
+						</nav>
+				</div>
+			</header>
+			<div id="page">
+				<div class="container">
+					<nav id="index">
+						{{template "index" .}}
+					</nav>
+					<section id="content" class="markdown-body">
+						<nav class="breadcrumbs">
+							{{range .Breadcrumbs}}
+								<a href="{{.URL}}" class="{{if .IsActive}}active{{end}}">{{.Label}}</a> {{if not .IsActive}}/{{end}}
+							{{end}}
+						</nav>
+						{{markdown .}}
+					</section>
+				</div>
+			</div>
+		</body>
+	</html>
+{{end}}
+
+{{/*
+The index and doc_nav templates are copied to the https://github.com/sourcegraph/sourcegraph
+repository's docsite package. They should be kept in sync.
+*/}}
+{{define "index"}}
+	{{with (or (and (eq (len .Doc.Tree) 1) (index .Doc.Tree 0).Children) .Doc.Tree)}}
+		<h4 class="visible-sm">{{$.Doc.Title}}</h4>
+		<h4 class="visible-lg">On this page:</h4>
+		<ul>{{template "doc_nav" .}}</ul>
+	{{end}}
+	<a class="edit-btn" href="https://github.com/sourcegraph/sourcegraph/edit/master/doc/{{.FilePath}}">Edit this page</a>
+{{end}}
+{{define "doc_nav"}}
+	{{range .}}
+		<li>
+			<a href="{{.URL}}">{{.Title}}</a>
+			{{with .Children}}
+				<ul>
+					{{template "doc_nav" .}}
+				</ul>
+			{{end}}
+	{{end}}
+{{end}}
