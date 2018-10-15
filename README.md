@@ -10,6 +10,8 @@ Install `docsite`:
 go get github.com/sourcegraph/docsite/cmd/docsite
 ```
 
+The following commands assume that you are in this repository's top-level directory and that [sourcegraph/sourcegraph@`docs`](https://github.com/sourcegraph/sourcegraph/tree/docs) is checked out at `../sourcegraph`.
+
 To run an HTTP server for this site:
 
 ```shell
