@@ -1,0 +1,10 @@
+{
+  "templates": "templates",
+  "content": "../sourcegraph/doc",
+  "baseURLPath": "/",
+  "assets": "assets",
+  "assetsBaseURLPath": "/assets/",
+  "check": {
+    "ignoreURLPattern": "(^https?://)|(^#)|(^mailto:support@sourcegraph\\.com$)|(^chrome://)"
+  }
+}
