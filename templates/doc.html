@@ -20,6 +20,7 @@
 			<div id="page">
 				<div class="container">
 					<nav id="index">
+						{{with .ContentVersion}}<h3 class="version">Version: <code>{{.}}</code></h5>{{end}}
 						{{template "index" .}}
 					</nav>
 					<section id="content" class="markdown-body">
