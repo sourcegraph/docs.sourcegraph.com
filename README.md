@@ -51,4 +51,9 @@ Then visit http://localhost:5080.
 
 ### Update production templates and assets
 
-Push to this repository's `docs.sourcegraph.com` branch.
+Push to this repository's `docs.sourcegraph.com` branch:
+
+```shell
+git commit
+git push origin HEAD:docs.sourcegraph.com
+```
