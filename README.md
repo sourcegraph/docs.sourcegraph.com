@@ -39,11 +39,11 @@ From the top-level directory of this repository:
 
 > This is how https://docs.sourcegraph.com is deployed.
 
-To start a web server with the latest documentation content (and templates and assets from this repository's `master` branch), run:
+To start a web server with the latest documentation content (and templates and assets from this repository's `docs.sourcegraph.com` branch), run:
 
 ```shell
 docker run -p 5080:5080 \
-  -e DOCSITE_CONFIG='{"templates":"https://codeload.github.com/sourcegraph/docs.sourcegraph.com/zip/master#docs.sourcegraph.com-master/templates/","assets":"https://codeload.github.com/sourcegraph/docs.sourcegraph.com/zip/master#docs.sourcegraph.com-master/assets/","content":"https://codeload.github.com/sourcegraph/sourcegraph/zip/master#sourcegraph-master/doc/","baseURLPath":"/","assetsBaseURLPath":"/assets/"}' \
+  -e DOCSITE_CONFIG='{"templates":"https://codeload.github.com/sourcegraph/docs.sourcegraph.com/zip/docs.sourcegraph.com#*/templates/","assets":"https://codeload.github.com/sourcegraph/docs.sourcegraph.com/zip/docs.sourcegraph.com#*/assets/","content":"https://codeload.github.com/sourcegraph/sourcegraph/zip/master#sourcegraph-master/doc/","baseURLPath":"/","assetsBaseURLPath":"/assets/"}' \
   sourcegraph/docsite serve
 ```
 
