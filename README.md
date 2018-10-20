@@ -48,3 +48,7 @@ docker run -p 5080:5080 \
 ```
 
 Then visit http://localhost:5080.
+
+### Update production templates and assets
+
+Push to this repository's `docs.sourcegraph.com` branch.
