@@ -4,6 +4,7 @@
 			<title>{{with .Content}}{{.Doc.Title}}{{else}}Error{{end}} - Sourcegraph</title>
 			<link rel="stylesheet" type="text/css" href="{{asset "layout.css"}}?1" />
 			<link rel="stylesheet" type="text/css" href="{{asset "content.css"}}?1" />
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 			{{if (or (not .Content) .ContentVersion)}}<meta name="robots" content="noindex">{{end}}
 		</head>
@@ -12,10 +13,11 @@
 				<div class="container">
 					<a href="/" id="logo"><img src="{{asset "sourcegraph-logo.svg"}}" /> <span aria-hidden="true" class="visible-sm">Docs</span> <span class="visible-lg">Documentation</span></a>
 					<nav>
+						<input type="search" id="search" placeholder="Search..." />
 						<a href="https://github.com/sourcegraph/sourcegraph">Code</a>
 						<a href="https://about.sourcegraph.com">About</a>
 						<a href="https://sourcegraph.com">Sourcegraph.com</a>
-						</nav>
+					</nav>
 				</div>
 			</header>
 			<div id="page">
@@ -47,6 +49,17 @@
 					</section>
 				</div>
 			</div>
+
+			<!-- Algolia doc search -->
+			<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+			<script type="text/javascript">
+			docsearch({
+				apiKey: 'f1b3c4d15528dfd4b90b8ec2812f39ab',
+				indexName: 'sourcegraph',
+				inputSelector: '#search',
+				debug: false,
+			});
+			</script>
 		</body>
 	</html>
 {{end}}
