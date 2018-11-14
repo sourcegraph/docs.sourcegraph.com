@@ -670,3 +670,21 @@
   border-bottom-color: #eee;
 }
 
+
+/*
+
+Visibility classes:
+
+  .visible-docsite: Only visible on docs.sourcegraph.com.
+
+  .visible-product: Only visible on Sourcegraph in-product /help.
+
+*/
+body.is-docsite .visible-docsite {}
+body.is-docsite .visible-product {
+	display: none;
+}
+body:not(.is-docsite) .visible-docsite {
+	display: none;
+}
+body:not(.is-docsite) .visible-product {}
