@@ -8,7 +8,7 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 			{{if (or (not .Content) .ContentVersion)}}<meta name="robots" content="noindex">{{end}}
 		</head>
-		<body data-path="{{.Content.Path}}" class="is-docsite">
+		<body {{with .Content}}data-path="{{.Path}}"{{end}} class="is-docsite">
 			<header id="header">
 				<div class="container">
 					<a href="/" id="logo"><img src="{{asset "sourcegraph-logo.svg"}}" /> <span aria-hidden="true" class="visible-sm">Docs</span> <span class="visible-lg">Documentation</span></a>
