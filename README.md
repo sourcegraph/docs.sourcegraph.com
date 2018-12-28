@@ -57,3 +57,5 @@ Push to this repository's `docs.sourcegraph.com` branch:
 git commit
 git push origin HEAD:docs.sourcegraph.com
 ```
+
+Then run `kubectl delete pod docs-sourcegraph-com-...` on the Kubernetes cluster that runs the `docs-sourcegraph-com` deployment. (The pod will be restarted and will immediately re-download the new templates and assets.)
