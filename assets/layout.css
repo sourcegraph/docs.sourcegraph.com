@@ -148,6 +148,7 @@ a:hover {
 	flex: 8 4;
 	background-color: white;
 	padding: var(--spacing) var(--spacing) calc(3*var(--spacing));
+	overflow: hidden;
 }
 #content > .body > .breadcrumbs {
 	font-size: 90%;
