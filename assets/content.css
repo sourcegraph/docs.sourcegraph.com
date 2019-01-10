@@ -1,6 +1,10 @@
 /* Line break that is only visible, but not copy-pasted. Used for terminal commands. */
 .virtual-br::before {
-    content: '\A';
+  content: "\A";
+}
+
+.pre-wrap {
+  white-space: pre-wrap;
 }
 
 .markdown-body {
@@ -314,14 +318,16 @@
 }
 
 .markdown-body code {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
   font-size: 12px;
 }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
   font-size: 12px;
 }
 
@@ -368,11 +374,11 @@
   content: "";
 }
 
-.markdown-body>*:first-child {
+.markdown-body > *:first-child {
   margin-top: 0 !important;
 }
 
-.markdown-body>*:last-child {
+.markdown-body > *:last-child {
   margin-bottom: 0 !important;
 }
 
@@ -387,14 +393,14 @@
 }
 
 .markdown-body .anchor::before {
-	content: "#";
-	position: absolute;
-	padding-left: 5px;
-	padding-right: 3px;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	font-size: 16px;
+  content: "#";
+  position: absolute;
+  padding-left: 5px;
+  padding-right: 3px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 16px;
 }
 
 .markdown-body .anchor:focus {
@@ -426,36 +432,36 @@
   border-left: 0.25em solid #dfe2e5;
 }
 
-.markdown-body blockquote>:first-child {
+.markdown-body blockquote > :first-child {
   margin-top: 0;
 }
 
-.markdown-body blockquote>:last-child {
+.markdown-body blockquote > :last-child {
   margin-bottom: 0;
 }
 
 .markdown-body aside {
-	padding: 0.65em 0.9em 0.55em;
-	margin-bottom: 1em;
-	border-width: 1px;
-	border-style: solid;
-	border-radius: 3px;
+  padding: 0.65em 0.9em 0.55em;
+  margin-bottom: 1em;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 3px;
 }
-.markdown-body aside>:first-child {
-	margin-top: 0;
+.markdown-body aside > :first-child {
+  margin-top: 0;
 }
-.markdown-body aside>:last-child {
-	margin-bottom: 0;
+.markdown-body aside > :last-child {
+  margin-bottom: 0;
 }
 .markdown-body aside.note {
-	border-color: #bce8f1;
-	background-color: #d9edf7;
-	color: #26607c;
+  border-color: #bce8f1;
+  background-color: #d9edf7;
+  color: #26607c;
 }
 .markdown-body aside.warning {
-	border-color: #faebcc;
-	background-color: #fcf8e3;
-	color: #70572b;
+  border-color: #faebcc;
+  background-color: #fcf8e3;
+  color: #70572b;
 }
 
 .markdown-body kbd {
@@ -540,11 +546,11 @@
   word-wrap: break-all;
 }
 
-.markdown-body li>p {
+.markdown-body li > p {
   margin-top: 16px;
 }
 
-.markdown-body li+li {
+.markdown-body li + li {
   margin-top: 0.25em;
 }
 
@@ -596,11 +602,11 @@
   background-color: #fff;
 }
 
-.markdown-body img[align=right] {
+.markdown-body img[align="right"] {
   padding-left: 20px;
 }
 
-.markdown-body img[align=left] {
+.markdown-body img[align="left"] {
   padding-right: 20px;
 }
 
@@ -608,7 +614,7 @@
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 85%;
-  background-color: rgba(27,31,35,0.05);
+  background-color: rgba(27, 31, 35, 0.05);
   border-radius: 3px;
 }
 
@@ -616,7 +622,7 @@
   word-wrap: normal;
 }
 
-.markdown-body pre>code {
+.markdown-body pre > code {
   padding: 0;
   margin: 0;
   font-size: 100%;
@@ -660,7 +666,8 @@
 .markdown-body kbd {
   display: inline-block;
   padding: 3px 5px;
-  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
   line-height: 10px;
   color: #444d56;
   vertical-align: middle;
@@ -675,7 +682,6 @@
   border-bottom-color: #eee;
 }
 
-
 /*
 
 Visibility classes:
@@ -685,11 +691,13 @@ Visibility classes:
   .visible-product: Only visible on Sourcegraph in-product /help.
 
 */
-body.is-docsite .visible-docsite {}
+body.is-docsite .visible-docsite {
+}
 body.is-docsite .visible-product {
-	display: none;
+  display: none;
 }
 body:not(.is-docsite) .visible-docsite {
-	display: none;
+  display: none;
 }
-body:not(.is-docsite) .visible-product {}
+body:not(.is-docsite) .visible-product {
+}
