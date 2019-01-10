@@ -1,6 +1,7 @@
 {
   "templates": "templates",
-  "content": "../sourcegraph/doc",
+  "content":"https://codeload.github.com/sourcegraph/sourcegraph/zip/$VERSION#*/doc/",
+  "content2": "../sourcegraph/doc",
   "baseURLPath": "/",
   "assets": "assets",
   "assetsBaseURLPath": "/assets/",

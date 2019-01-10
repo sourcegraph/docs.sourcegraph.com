@@ -88,6 +88,14 @@ a:hover {
 	transition: 0.15s ease-in-out;
 }
 
+/* VERSION */
+#version {
+	margin-bottom: 0.5rem;
+}
+#version .active {
+	font-weight: bold;
+}
+
 /* PAGE */
 @media (max-width: 900px) {
 	.visible-sm { display: unset; }
