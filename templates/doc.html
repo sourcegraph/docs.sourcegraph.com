@@ -22,13 +22,25 @@
 			</header>
 			<div id="page">
 				<div class="container">
-					{{if .Content}}
+					{{with .Content}}
 						<nav id="index">
-							{{with .ContentVersion}}<h3 class="version">Version: <code>{{.}}</code></h5>{{end}}
-							{{with .Content}}{{template "index" .}}{{end}}
+							{{template "index" .}}
 						</nav>
 					{{end}}
 					<section id="content" class="markdown-body">
+						<nav id="version">
+							{{/* Update these after each release. */}}
+							{{$currentReleaseRevspec := "v2.13.5"}}
+							{{$currentReleaseVersion := "2.13"}}
+							{{$nextReleaseVersion := "3.0"}}
+							Version:
+							{{if (and .ContentVersion (ne .ContentVersion $currentReleaseRevspec))}}
+								<strong>{{.ContentVersion}}</strong> /
+							{{end}}
+							<a class="{{if eq .ContentVersion ""}}active{{end}}" href="/{{.ContentPagePath}}">{{$nextReleaseVersion}} (next)</a>
+							/
+							<a class="{{if eq .ContentVersion $currentReleaseRevspec}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$currentReleaseVersion}} (current)</a>
+						</nav>
 						{{with .Content}}
 							<nav class="breadcrumbs">
 								{{range .Breadcrumbs}}
