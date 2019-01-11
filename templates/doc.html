@@ -37,9 +37,9 @@
 							{{if (and .ContentVersion (ne .ContentVersion $currentReleaseRevspec))}}
 								<strong>{{.ContentVersion}}</strong> /
 							{{end}}
-							<a class="{{if eq .ContentVersion ""}}active{{end}}" href="/{{.ContentPagePath}}">{{$nextReleaseVersion}} (next)</a>
+							<a rel="nofollow" class="{{if eq .ContentVersion ""}}active{{end}}" href="/{{.ContentPagePath}}">{{$nextReleaseVersion}} (next)</a>
 							/
-							<a class="{{if eq .ContentVersion $currentReleaseRevspec}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$currentReleaseVersion}} (current)</a>
+							<a rel="nofollow" class="{{if eq .ContentVersion $currentReleaseRevspec}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$currentReleaseVersion}} (current)</a>
 						</nav>
 						{{with .Content}}
 							<nav class="breadcrumbs">
