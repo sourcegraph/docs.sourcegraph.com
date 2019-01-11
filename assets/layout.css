@@ -158,10 +158,16 @@ a:hover {
 	padding: var(--spacing) var(--spacing) calc(3*var(--spacing));
 	overflow: hidden;
 }
-#content > .body > .breadcrumbs {
+#content > #version, #content > .breadcrumbs {
 	font-size: 90%;
 }
-#content > .body > .breadcrumbs > .active {
+#content > #version {
+	margin-top: 0.25rem;
+}
+#content > .breadcrumbs {
+	margin-bottom: 0.75rem;
+}
+#content > .breadcrumbs > .active {
 	color: inherit;
 	opacity: 0.8;
 }

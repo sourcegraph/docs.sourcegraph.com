@@ -27,7 +27,7 @@
 							{{template "index" .}}
 						</nav>
 					{{end}}
-					<section id="content" class="markdown-body">
+					<section id="content">
 						<nav id="version">
 							{{/* Update these after each release. */}}
 							{{$currentReleaseRevspec := "v2.13.5"}}
@@ -42,12 +42,12 @@
 							<a rel="nofollow" class="{{if eq .ContentVersion $currentReleaseRevspec}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$currentReleaseVersion}} (current)</a>
 						</nav>
 						{{with .Content}}
-							<nav class="breadcrumbs">
+							<nav id="breadcrumbs" class="breadcrumbs">
 								{{range .Breadcrumbs}}
 									<a href="{{.URL}}" class="{{if .IsActive}}active{{end}}">{{.Label}}</a> {{if not .IsActive}}/{{end}}
 								{{end}}
 							</nav>
-							{{markdown .}}
+							<div class="markdown-body">{{markdown .}}</div>
 						{{else}}
 							{{if .ContentVersionNotFoundError}}
 								<h1>Version not found</h1>
