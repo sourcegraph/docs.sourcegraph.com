@@ -12,7 +12,7 @@ You can preview your local changes to:
 
 - templates (in [`templates/`](templates))
 - assets (in [`assets/`](assets))
-- documentation content (in [`../sourcegraph/doc`](https://github.com/sourcegraph/sourcegraph/tree/master/doc), which is assumed to be in your local clone of [sourcegraph/sourcegraph](https://github.com/sourcegraph/sourcegraph)
+- documentation content (in [`../sourcegraph/doc`](https://github.com/sourcegraph/sourcegraph/tree/master/doc), which is assumed to be in your local clone of [sourcegraph/sourcegraph](https://github.com/sourcegraph/sourcegraph))
 
 Requirements:
 
