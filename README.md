@@ -19,7 +19,7 @@ Requirements:
 - Install Go 1.11
 - Install [docsite](https://github.com/sourcegraph/docsite):
    ```shell
-   GO111MODULE=on go get github.com/sourcegraph/docsite/cmd/docsite
+   GO111MODULE=on go get -u github.com/sourcegraph/docsite/cmd/docsite
    ```
 
 From the top-level directory of this repository:
