@@ -76,16 +76,19 @@ a:hover {
 }
 
 /* SEARCH */
-#search {
+#search-form {
+  margin-bottom: 0;
+  margin-right: 0.5rem;
+}
+#search, #search-button {
 	padding: 0.325rem;
-	margin-right: 0.5rem;
-	border: solid 1px #ccc;
+}
+#search {
 	border-radius: 0;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
 	width: 10rem;
-	transition: 0.15s ease-in-out;
+}
+#search-button {
+  margin-left: 0.125rem;
 }
 
 /* VERSION */
@@ -152,7 +155,7 @@ a:hover {
 }
 
 /* CONTENT */
-#content {	
+#content {
 	flex: 8 4;
 	background-color: white;
 	padding: var(--spacing) var(--spacing) calc(3*var(--spacing));

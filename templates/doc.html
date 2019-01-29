@@ -2,7 +2,7 @@
 	<html>
 		<head>
 			<title>{{with .Content}}{{.Doc.Title}}{{else}}Error{{end}} - Sourcegraph</title>
-			<link rel="stylesheet" type="text/css" href="{{asset "layout.css"}}?5" />
+			<link rel="stylesheet" type="text/css" href="{{asset "layout.css"}}?6" />
 			<link rel="stylesheet" type="text/css" href="{{asset "content.css"}}?2" />
 			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -13,7 +13,8 @@
 				<div class="container">
 					<a href="/" id="logo"><img src="{{asset "sourcegraph-logo.svg"}}" /> <span aria-hidden="true" class="visible-sm">Docs</span> <span class="visible-lg">Documentation</span></a>
 					<nav>
-						<input type="search" id="search" placeholder="Search..." />
+
+						<form id="search-form" onsubmit="location.href = 'https://www.google.com/search?ie=UTF-8&q=site%3Adocs.sourcegraph.com+'+encodeURIComponent(document.getElementById('search').value);return false"><input type="search" id="search" placeholder="Search docs..." spellcheck="false" /><button id="search-button" type="submit">Search</button></form>
 						<a href="https://github.com/sourcegraph/sourcegraph">Code</a>
 						<a href="https://about.sourcegraph.com">About</a>
 						<a href="https://sourcegraph.com">Sourcegraph.com</a>
@@ -61,17 +62,6 @@
 					</section>
 				</div>
 			</div>
-
-			<!-- Algolia doc search -->
-			<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-			<script type="text/javascript">
-			docsearch({
-				apiKey: 'f1b3c4d15528dfd4b90b8ec2812f39ab',
-				indexName: 'sourcegraph',
-				inputSelector: '#search',
-				debug: false,
-			});
-			</script>
 		</body>
 	</html>
 {{end}}
