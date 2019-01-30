@@ -7,6 +7,10 @@
   white-space: pre-wrap;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .markdown-body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
