@@ -4,7 +4,6 @@
 			<title>{{with .Content}}{{.Doc.Title}}{{else}}Error{{end}} - Sourcegraph</title>
 			<link rel="stylesheet" type="text/css" href="{{asset "layout.css"}}?6" />
 			<link rel="stylesheet" type="text/css" href="{{asset "content.css"}}?2" />
-			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
 			<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 			{{if (or (not .Content) .ContentVersion)}}<meta name="robots" content="noindex">{{end}}
 		</head>
