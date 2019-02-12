@@ -9,8 +9,8 @@ This repository houses the templates and assets for [docs.sourcegraph.com](https
 To preview changes to documentation content, [`templates/`](templates) and [`assets/`](assets), you need to:
 
 - Install Go 1.11+
-- Install [docsite](https://github.com/sourcegraph/docsite) are required.
-- Make the [Sourcegraph repository](a sibling) so it is a sibling of `docs.sourcegraph.com`
+- Install [docsite](https://github.com/sourcegraph/docsite).
+- Enable docsite to access the Sourcegraph `/doc` directory
 
 ### Installing docsite
 
@@ -30,11 +30,11 @@ GO111MODULE=on go get -u github.com/sourcegraph/docsite/cmd/docsite
 
 ### How docsite accesses documentation content
 
-The [`docsite.json`](docsite.json) file expects documentation to be in [`../sourcegraph/doc`](https://github.com/sourcegraph/sourcegraph/tree/master/doc), which is assumed to be in your local clone of [sourcegraph/sourcegraph](https://github.com/sourcegraph/sourcegraph)). It should be a sibling of the `docs.sourcegraph.com` local clone.
+The [`docsite.json`](docsite.json) file expects documentation to be in [`../sourcegraph/doc`](https://github.com/sourcegraph/sourcegraph/tree/master/doc), which is assumed to be in your local clone of [sourcegraph/sourcegraph](https://github.com/sourcegraph/sourcegraph). In other words, the `sourcegraph` local clone should be a sibling of the `docs.sourcegraph.com` local clone.
 
 ## Running the docsite server
 
-- To run the docsite server:
+To run the docsite server:
 
 ```shell
 docsite serve
@@ -44,17 +44,17 @@ Then visit http://localhost:5080.
 
 ## Checking for problems (e.g. broken links)
 
-To check for common problems in the Markdown and template files, run:
+To check for problems in the Markdown and template files, run:
 
 ```shell
 docsite check
 ```
 
-It's recommended to run this before pushing docs or template/assets changes and is run in as part of the Sourcegraph build CI job.
+It's recommended to run this before pushing docs or template/assets changes and is run as part of the Sourcegraph build job.
 
 ## Emulating https://docs.sourcegraph.com by running in Docker
 
-> This is how https://docs.sourcegraph.com is deployed.
+> NOTE: This is how https://docs.sourcegraph.com is deployed.
 
 > NOTE: Running in Docker is only suitable for production or when downloading zipped assets.
 
