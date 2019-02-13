@@ -20,6 +20,7 @@
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
+  tab-size: 2;
 }
 
 .markdown-body .pl-c {
@@ -624,6 +625,10 @@
 
 .markdown-body pre {
   word-wrap: normal;
+}
+
+.markdown-body .pre-wrap pre {
+  white-space: pre-wrap !important;
 }
 
 .markdown-body pre > code {
