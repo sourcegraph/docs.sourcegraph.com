@@ -77,4 +77,4 @@ git commit
 git push origin HEAD:docs.sourcegraph.com
 ```
 
-Then run `kubectl delete pod docs-sourcegraph-com-...` on the Kubernetes cluster that runs the `docs-sourcegraph-com` deployment. (The pod will be restarted and will immediately re-download the new templates and assets.)
+Then run `kubectl delete pod docs-sourcegraph-com-...` on the Kubernetes cluster that runs the `docs-sourcegraph-com` deployment. The pod will be restarted and will immediately re-download the new templates and assets. You can also just wait 5 minutes for the existing pod to periodically reload the templates and assets (instead of deleting the pod).
