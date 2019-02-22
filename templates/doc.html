@@ -61,15 +61,26 @@
 					</section>
 				</div>
       </div>
-
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40540747-20"></script>
       <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
+        {{/* docs.sourcegraph.com only */}}
         gtag('config', 'UA-40540747-20');
+        {{/* about.sourcegraph.com + docs.sourcegraph.com */}}
+        gtag('config', 'UA-40540747-17');
+        gtag('config', 'AW-868484203');
       </script>
+      {{if (eq .ContentPagePath "")}}
+        {{/*
+        register AdWords conversion on https://docs.sourcegraph.com (i.e., on Quickstart)
+        */}}
+        <script>
+          gtag('event', 'conversion', {'send_to': 'AW-868484203/v2YvCJ2s3JUBEOuIkJ4D'});
+        </script>
+      {{end}}
 		</body>
 	</html>
 {{end}}
