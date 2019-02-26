@@ -71,7 +71,7 @@ body {
 }
 .nav-sticky-wrapper {
 	height: 100%;
-	float:right;
+	position: absolute;
 }
 .page-nav {
 	position: -webkit-sticky;
