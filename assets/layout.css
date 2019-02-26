@@ -29,10 +29,11 @@ body {
 }
 .nav-content {
 	height: 100%;
+	padding: 0 1rem;
 	border-bottom: 1px solid #eaecee;
 }
 .docs-content {
-	padding-top: 44px;
+	padding-top: 58px;
 	padding-bottom: 84px;
 }
 .column {
@@ -75,6 +76,7 @@ body {
 .page-nav {
 	position: -webkit-sticky;
 	top: 120px;
+	padding-left: 14px
 }
 .nav {
 	flex: 1 0;
@@ -99,14 +101,88 @@ body {
 	text-align: left;
 }
 .nav-logo-image {
-	width: 180px;
+	width: 220px;
 	text-align: left;
-	padding-top:12px;
-	padding-bottom: 12px;
+	padding-top: 5px;
+	padding-bottom: 4px;
+}
+.form-inline {
+	margin: 0;
+	align-self: flex-end;
+}
+.nav-search-button {
+	margin-left: .5rem;
+	height: 34px;
+}
+.nav-link-container {
+	list-style: none;
+	margin: 0;
+}
+.nav-link {
+	margin-left: 0;
+	float: left;
+	list-style: none;
 }
 .docs-content-section {
 	padding-right: 1rem;
 }
+
+/* Nav iOS */
+@media screen and (max-width: 768px) {
+	.nav-container {
+		display: block;
+	}
+	.nav-logo {
+		display: block;
+		width: 100%;
+	}
+    .nav {
+        transition: all .3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+		display:flex;
+      	flex-flow: column;
+		padding-left: 2px;
+		padding-right: 2px;
+    }
+	.nav-link-container {
+
+		display: block;
+		order: 2;
+		width: 100%;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		padding-top: .5rem;
+		padding-bottom: 1rem;
+	}
+	.nav-link {
+		margin-left: 0;
+		padding-left: 0;
+		display: block;
+		float: none;
+		width: 100%;
+		height: 32px;
+	}
+	.form-inline {
+		display: flex;
+		flex-grow: 1;
+		justify-content: space-between;
+		width: 100%;
+		align-self: flex-start;
+		order: 1;
+	}
+	.nav-search {
+		display: flex;
+		flex-grow: 1;
+		width: auto;
+	}
+	.nav-search-button {
+		display: inline-block;
+		margin-right: 0;
+	}
+}
+
 /* PAGE */
 @media (max-width: 900px) {
 	.visible-sm { display: unset; }
@@ -148,6 +224,10 @@ body {
 }
 #index > ul li {
 	list-style: none;
+	line-height: normal;
+	padding-left: 10px;
+	text-indent: -13px;
+	padding-top: 8px;
 }
 #index > ul li::before {
 	content: "\203A\00a0";

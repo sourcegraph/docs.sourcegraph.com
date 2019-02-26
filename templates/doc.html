@@ -10,17 +10,29 @@
 	{{if (or (not .Content) .ContentVersion)}}<meta name="robots" content="noindex">{{end}}
 </head>
 <body {{with .Content}}data-path="{{.Path}}"{{end}} class="theme theme-light">
+		<input type="checkbox" id="nav-state" class="nav-state"/>
 		<div class="global-navbar">
-			<div class="section-content nav-content">
+			<div class="nav-content">
 				<div class="nav-container flex-container">
 					<a href="/" class="nav-logo" id="logo">
 						<img class="nav-logo-image" src="/assets/sourcegraph-logo-docs.svg">
 					</a>
 					<div class="nav">
-						<form id="search-form" onsubmit="location.href = 'https://www.google.com/search?ie=UTF-8&amp;q=site%3Adocs.sourcegraph.com+'+encodeURIComponent(document.getElementById('search').value);return false"><input type="search" id="search" placeholder="Search docs..." spellcheck="false"><button id="search-button" type="submit">Search</button></form>
-						<a href="https://github.com/sourcegraph/sourcegraph">Code</a>
-						<a href="https://about.sourcegraph.com">About</a>
-						<a href="https://sourcegraph.com">Sourcegraph.com</a>
+						<ul class="nav-link-container">
+							<li class="nav-link">
+								<a href="https://about.sourcegraph.com">About</a>
+							</li>
+							<li class="nav-link">
+								<a href="https://github.com/sourcegraph/sourcegraph">Code</a>
+							</li>
+							<li class="nav-link">
+								<a href="https://sourcegraph.com">Sourcegraph.com</a>
+							</li>
+						</ul>
+						<form id="search-form" class="form-inline" onsubmit="location.href = 'https://www.duckduckgo.com/site%3Adocs.sourcegraph.com '+encodeURIComponent(document.getElementById('search').value);return false">
+							<input class="nav-search form-control" type="search" id="search" placeholder="Search docs..." spellcheck="false">
+							<button class="btn btn-primary nav-search-button" id="search-button" type="submit">Search</button>
+						</form>
 					</div>
 				</div>
 			</div>
