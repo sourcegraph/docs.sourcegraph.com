@@ -131,6 +131,7 @@ body {
 @media screen and (max-width: 768px) {
 	.nav-container {
 		display: block;
+		z-index: 9999;
 	}
 	.nav-logo {
 		display: block;
@@ -140,10 +141,17 @@ body {
         transition: all .3s ease-in-out;
         position: relative;
         overflow: hidden;
-		display:flex;
+		display: flex;
       	flex-flow: column;
-		padding-left: 2px;
-		padding-right: 2px;
+		top: 74px;
+		position: fixed;
+		z-index: 9990;
+		background: #ffffff;
+		box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.20);
+		right: .5rem;
+		left: .5rem;
+		padding: 2rem 1.5rem 1rem;
+		border-radius: 6px;
     }
 	.nav-link-container {
 
@@ -154,15 +162,30 @@ body {
 		margin: 0;
 		padding-left: 0;
 		padding-top: .5rem;
-		padding-bottom: 1rem;
+		padding-bottom: 0;
 	}
 	.nav-link {
-		margin-left: 0;
-		padding-left: 0;
+		margin: 1rem 0;
+		padding: 0;
 		display: block;
 		float: none;
 		width: 100%;
 		height: 32px;
+	}
+	.nav-link a {
+		display: block;
+		text-align: center;
+		padding: 7px 4px;
+		width: 100%;
+		background-color: #e1e6ef;
+		border: 1px solid #e1e6ef;
+		border-radius: 2px;
+		color: #212529;
+		transition: background-color 200ms ease;
+	}
+	.nav-link a:hover {
+		text-decoration: none;
+		background-color: #c9d1e2;
 	}
 	.form-inline {
 		display: flex;
