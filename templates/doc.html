@@ -30,11 +30,30 @@
 							</li>
 						</ul>
 						<script>
+							// Toggle search dropdown on button click
 							function toggleSearchDropdown() {
 								const searchDropdown = document.getElementById("searchDropdown");
 								searchDropdown.classList.toggle("show");
 							}
+							// Listen for click outside search form to close dropdown
+							document.addEventListener("click", (e) => {
+							    const searchDropdownArea = document.getElementById("search-form");
+								const searchDropdown = document.getElementById("searchDropdown");
+							    let targetElement = e.target;
+
+							    do {
+							        if (targetElement == searchDropdownArea) {
+							            return;
+							        }
+							        targetElement = targetElement.parentNode;
+							    } while (targetElement);
+							    searchDropdown.classList.remove("show");
+							});
+
 							function searchDocsWithProvider(searchProvider) {
+								if (document.getElementById('search').value === "") {
+
+								}
 								if (searchProvider === "google") {
 									location.href = 'https://www.google.com/search?ie=UTF-8&q=site%3Adocs.sourcegraph.com+ '+encodeURIComponent(document.getElementById('search').value);
 									return false;
