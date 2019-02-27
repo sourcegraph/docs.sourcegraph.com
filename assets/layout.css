@@ -261,19 +261,46 @@ body {
 	border-right: 1px solid #eaecee;
 }
 
-
+.nav-state, .mobile-nav-button {
+	display: none;
+}
 /* Nav iOS */
 @media screen and (max-width: 950px)  {
+	.nav-logo {
+		display: inline-block;
+		width: calc(100% - 60px);
+	}
+	input[type=checkbox].nav-state, .mobile-nav-button {
+		position: absolute;
+		display: block;
+		top: 5px;
+		right: 1rem;
+		height: 50px;
+		width: 50px;
+		background-color: red !important;
+	}
+	.nav-state {
+		display: none;
+		z-index: 9999;
+		opacity: 0;
+	}
+	.mobile-nav-button {
+		z-index: 9998;
+	}
+	.nav-state:not(:checked) + .nav-content .nav-container  .nav {
+		top: -100%;
+		opacity: 0;
+	}
+	.nav-state:checked +  .nav-content .nav-container  .nav {
+		display: flex;
+		opacity: 1;
+	}
 	.nav-container {
 		display: block;
 		z-index: 9999;
 	}
-	.nav-logo {
-		display: block;
-		width: 100%;
-	}
     .nav {
-        transition: all .3s ease-in-out;
+        transition: opacity .3s ease-in-out;
         position: relative;
         overflow: hidden;
 		display: flex;
