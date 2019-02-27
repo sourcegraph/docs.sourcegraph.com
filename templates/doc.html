@@ -29,10 +29,43 @@
 								<a href="https://sourcegraph.com">Sourcegraph.com</a>
 							</li>
 						</ul>
-						<form id="search-form" class="form-inline" onsubmit="location.href = 'https://www.duckduckgo.com/site%3Adocs.sourcegraph.com '+encodeURIComponent(document.getElementById('search').value);return false">
+						<script>
+							function toggleSearchDropdown() {
+								const searchDropdown = document.getElementById("searchDropdown");
+								searchDropdown.classList.toggle("show");
+							}
+							function searchDocsWithProvider(searchProvider) {
+								if (searchProvider === "google") {
+									location.href = 'https://www.google.com/search?ie=UTF-8&q=site%3Adocs.sourcegraph.com+ '+encodeURIComponent(document.getElementById('search').value);
+									return false;
+								} else if (searchProvider === "duckduckgo") {
+									location.href = 'https://www.duckduckgo.com/site%3Adocs.sourcegraph.com '+encodeURIComponent(document.getElementById('search').value);
+									return false;
+								} else if (searchProvider === "sourcegraph") {
+									location.href = 'https://sourcegraph.com/search?q=repo:%5Egithub%5C.com/sourcegraph/sourcegraph+file:doc/+'+encodeURIComponent(document.getElementById('search').value);
+									return false;
+
+								} else {
+									console.error("Provide searchProvider to use docs Search")
+								}
+
+							}
+						</script>
+						<div id="search-form" class="form-inline" >
 							<input class="nav-search form-control" type="search" id="search" placeholder="Search docs..." spellcheck="false">
-							<button class="btn btn-primary nav-search-button" id="search-button" type="submit">Search</button>
-						</form>
+							<div class="btn-group">
+								<button class="btn btn-secondary nav-search-button" id="search-button" onClick="searchDocsWithProvider('google')">Search</button>
+							  <button onClick="toggleSearchDropdown()" type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							    <span class="sr-only">Change search provider</span>
+							  </button>
+							  <div id="searchDropdown" class="dropdown-menu dropdown-menu-right">
+									<h6 class="dropdown-header">Search docs with:</h6>
+									<button class="dropdown-item" type="button" onClick="searchDocsWithProvider('duckduckgo')">DuckDuckGo</button>
+									<button class="dropdown-item active" type="button" onClick="">Google</button>
+									<button class="dropdown-item" type="button" onClick="searchDocsWithProvider('sourcegraph')">Sourcegraph.com</button>
+							  </div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
