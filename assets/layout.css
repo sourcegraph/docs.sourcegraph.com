@@ -244,6 +244,9 @@ body {
 	padding-top: 5px;
 	padding-bottom: 4px;
 }
+.nav-logo-image-small {
+	width: 80px;
+}
 .form-inline {
 	margin: 0;
 	align-self: flex-end;
