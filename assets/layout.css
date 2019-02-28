@@ -204,9 +204,11 @@ body {
 	position: absolute;
 }
 .page-nav {
+	position: sticky;
 	position: -webkit-sticky;
-	top: 120px;
-	padding-left: 14px
+	top: 24px;
+	padding-left: 14px;
+	padding-bottom: 2rem;
 }
 .nav-header {
 	padding-top: 0.4rem;
