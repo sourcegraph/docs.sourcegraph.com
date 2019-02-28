@@ -264,6 +264,11 @@ body {
 .nav-state, .mobile-nav-button {
 	display: none;
 }
+.version-dropdown {
+}
+.monospace-text {
+	font-family: 'SF Mono', Menlo, monospace !important;
+}
 /* Nav iOS */
 @media screen and (max-width: 950px)  {
 	.nav-logo {

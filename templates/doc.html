@@ -17,6 +17,32 @@
 					<a href="/" class="nav-logo" id="logo">
 						<img class="nav-logo-image" src="/assets/sourcegraph-logo-docs.svg">
 					</a>
+					<div class="dropdown version-dropdown">
+					  <button class="btn btn-outline dropdown-toggle monospace-text" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    @v3.0.0
+					  </button>
+					  <div class="dropdown-menu show" aria-labelledby="dropdownMenu2">
+						<h6 class="dropdown-header">Sourcegraph version:</h6>
+
+					    <button class="dropdown-item monospace-text" type="button">@Master</button>
+						<button class="dropdown-item monospace-text" type="button">@v2.3.15</button>
+					    <button class="dropdown-item monospace-text active" type="button">@v3.0.0</button>
+						<button class="dropdown-item monospace-text" type="button">@v3.1.0</button>
+						<button class="dropdown-item monospace-text" type="button">@v3.2.0</button>
+						{{/* Update these after each release. */}}
+						{{$currentReleaseRevspec := "v3.0.1"}}
+						{{$currentReleaseVersion := "3.0"}}
+						{{$nextReleaseVersion := "3.1"}}
+						{{.ContentVersion}}
+						Version:
+						{{if (and .ContentVersion (ne .ContentVersion $currentReleaseRevspec))}}
+						<strong>{{.ContentVersion}}</strong> /
+						{{end}}
+						<a rel="nofollow" class="{{if eq .ContentVersion ""}}active{{end}}" href="/{{.ContentPagePath}}">{{$nextReleaseVersion}} (next)</a>
+						/
+						<a rel="nofollow" class="{{if eq .ContentVersion $currentReleaseRevspec}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$currentReleaseVersion}} (current)</a>
+					  </div>
+					</div>
 					<span class="mobile-nav-button"></span>
 					<div class="nav">
 						<ul class="nav-link-container">
@@ -96,19 +122,7 @@
 					</div>
 				</div>
 				<section class="column large-8 large-push-2 medium-9 medium-push-3 small-12 docs-content-section" id="content">
-					<nav id="version">
-						{{/* Update these after each release. */}}
-						{{$currentReleaseRevspec := "v3.0.1"}}
-						{{$currentReleaseVersion := "3.0"}}
-						{{$nextReleaseVersion := "3.1"}}
-						Version:
-						{{if (and .ContentVersion (ne .ContentVersion $currentReleaseRevspec))}}
-						<strong>{{.ContentVersion}}</strong> /
-						{{end}}
-						<a rel="nofollow" class="{{if eq .ContentVersion ""}}active{{end}}" href="/{{.ContentPagePath}}">{{$nextReleaseVersion}} (next)</a>
-						/
-						<a rel="nofollow" class="{{if eq .ContentVersion $currentReleaseRevspec}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$currentReleaseVersion}} (current)</a>
-					</nav>
+
 					{{with .Content}}
 					<nav id="breadcrumbs" class="breadcrumbs">
 						{{range .Breadcrumbs}}
