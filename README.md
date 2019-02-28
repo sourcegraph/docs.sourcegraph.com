@@ -40,6 +40,8 @@ To run the docsite server:
 docsite serve
 ```
 
+NOTE: When running locally the versioning system does not work.
+
 Then visit http://localhost:5080.
 
 ## Checking for problems (e.g. broken links)

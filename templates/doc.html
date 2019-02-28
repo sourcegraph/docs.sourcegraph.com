@@ -19,28 +19,20 @@
 					</a>
 					<div class="dropdown version-dropdown">
 					  <button class="btn btn-outline dropdown-toggle monospace-text" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					    @v3.0.0
+					    {{.ContentVersion}}
 					  </button>
 					  <div class="dropdown-menu show" aria-labelledby="dropdownMenu2">
 						<h6 class="dropdown-header">Sourcegraph version:</h6>
-
-					    <button class="dropdown-item monospace-text" type="button">@Master</button>
-						<button class="dropdown-item monospace-text" type="button">@v2.3.15</button>
-					    <button class="dropdown-item monospace-text active" type="button">@v3.0.0</button>
-						<button class="dropdown-item monospace-text" type="button">@v3.1.0</button>
-						<button class="dropdown-item monospace-text" type="button">@v3.2.0</button>
 						{{/* Update these after each release. */}}
-						{{$currentReleaseRevspec := "v3.0.1"}}
-						{{$currentReleaseVersion := "3.0"}}
-						{{$nextReleaseVersion := "3.1"}}
+						{{$currentReleaseRevspec := "v3.2.0"}}
+						{{$currentReleaseVersion := "v3.1.0"}}
+						{{$nextReleaseVersion := "v3.3.0"}}
+						{{$masterVersion := "master"}}
 						{{.ContentVersion}}
-						Version:
-						{{if (and .ContentVersion (ne .ContentVersion $currentReleaseRevspec))}}
-						<strong>{{.ContentVersion}}</strong> /
-						{{end}}
-						<a rel="nofollow" class="{{if eq .ContentVersion ""}}active{{end}}" href="/{{.ContentPagePath}}">{{$nextReleaseVersion}} (next)</a>
-						/
-						<a rel="nofollow" class="{{if eq .ContentVersion $currentReleaseRevspec}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$currentReleaseVersion}} (current)</a>
+						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $masterVersion .ContentVersion ""}}active{{end}}" href="/@{{$masterVersion}}/{{.ContentPagePath}}">Master</a>
+						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $currentReleaseVersion .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseVersion}}/{{.ContentPagePath}}">{{$currentReleaseVersion}}</a>
+						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $currentReleaseRevspec .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$currentReleaseRevspec}}<span class="current-branch">current</span></a>
+						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $nextReleaseVersion .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$nextReleaseVersion}}</a>
 					  </div>
 					</div>
 					<span class="mobile-nav-button"></span>
