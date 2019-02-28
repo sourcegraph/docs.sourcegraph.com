@@ -17,15 +17,15 @@
 					<a href="/" class="nav-logo" id="logo">
 						<img class="nav-logo-image" src="/assets/sourcegraph-logo-docs.svg">
 					</a>
-					<div class="dropdown version-dropdown">
-					  <button class="btn btn-outline dropdown-toggle monospace-text" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<div id="version-form" class="dropdown version-dropdown">
+					  <button class="btn btn-outline dropdown-toggle monospace-text" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="toggleDropdown('versionDropdown')">
 					    {{.ContentVersion}}
 						{{/* If no version is specified we are on the master branch */}}
 						{{if eq .ContentVersion ""}}
 							@Master
 						{{end}}
 					  </button>
-					  <div class="dropdown-menu show" aria-labelledby="dropdownMenu2">
+					  <div class="dropdown-menu" id="versionDropdown" aria-labelledby="Version Dropdown">
 						<h6 class="dropdown-header">Sourcegraph version:</h6>
 						{{/* Update these after each release. */}}
 						{{$previousRelease := "v3.0.1"}}
@@ -50,23 +50,38 @@
 						</ul>
 						<script>
 							// Toggle search dropdown on button click
-							function toggleSearchDropdown() {
-								const searchDropdown = document.getElementById("searchDropdown");
-								searchDropdown.classList.toggle("show");
+							function toggleDropdown(dropdownName) {
+								const dropdown = document.getElementById(dropdownName);
+								dropdown.classList.toggle("show");
 							}
 							// Listen for click outside search form to close dropdown
 							document.addEventListener("click", (e) => {
+								// create consts for dropdown areas (dropdown and button)
 							    const searchDropdownArea = document.getElementById("search-form");
+								const versionDropdownArea = document.getElementById("version-form");
+
+								// create consts for the actual dropdown element
 								const searchDropdown = document.getElementById("searchDropdown");
+								const versionDropdown = document.getElementById("versionDropdown");
+
 							    let targetElement = e.target;
 
 							    do {
 							        if (targetElement == searchDropdownArea) {
+										// If clicked area is in search dropdown remove all other dropdowns
+										versionDropdown.classList.remove("show");
+							            return;
+							        } else if (targetElement == versionDropdownArea) {
+										// If clicked area is in version dropdown remove all other dropdowns
+										searchDropdown.classList.remove("show");
 							            return;
 							        }
 							        targetElement = targetElement.parentNode;
 							    } while (targetElement);
-							    searchDropdown.classList.remove("show");
+								// If clicked area is outside all dropdowns remove all other dropdowns
+								versionDropdown.classList.remove("show");
+								searchDropdown.classList.remove("show");
+
 							});
 
 							function searchDocsWithProvider(searchProvider) {
@@ -93,7 +108,7 @@
 							<input class="nav-search form-control" type="search" id="search" placeholder="Search docs..." spellcheck="false">
 							<div class="btn-group">
 								<button class="btn btn-primary nav-search-button" id="search-button" onClick="searchDocsWithProvider('google')">Search</button>
-							  <button onClick="toggleSearchDropdown()" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							  <button onClick="toggleDropdown('searchDropdown')" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    <span class="sr-only">Change search provider</span>
 							  </button>
 							  <div id="searchDropdown" class="dropdown-menu dropdown-menu-right">
