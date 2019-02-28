@@ -118,21 +118,21 @@
 
 							}
 						</script>
-						<div id="search-form" class="form-inline" >
+						<form id="search-form" class="form-inline" onSubmit="return searchDocsWithProvider('google')">
 							<input class="nav-search form-control" type="search" id="search" placeholder="Search docs..." spellcheck="false">
 							<div class="btn-group">
-								<button class="btn btn-primary nav-search-button" id="search-button" onClick="searchDocsWithProvider('google')">Search</button>
+								<button class="btn btn-primary nav-search-button" id="search-button" type="submit" onClick="searchDocsWithProvider('google')">Search</button>
 							  <button onClick="toggleDropdown('searchDropdown')" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							    <span class="sr-only">Change search provider</span>
 							  </button>
 							  <div id="searchDropdown" class="dropdown-menu dropdown-menu-right">
 									<h6 class="dropdown-header">Search docs with:</h6>
 									<button class="dropdown-item" type="button" onClick="searchDocsWithProvider('duckduckgo')">DuckDuckGo</button>
-									<button class="dropdown-item active" type="button" onClick="">Google</button>
+									<button class="dropdown-item active" type="button" onClick="searchDocsWithProvider('google')">Google</button>
 									<button class="dropdown-item" type="button" onClick="searchDocsWithProvider('sourcegraph')">Sourcegraph.com</button>
 							  </div>
 							</div>
-						</div>
+						</form>
 
 					</div>
 				</div>

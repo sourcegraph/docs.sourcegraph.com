@@ -296,6 +296,9 @@ body {
 	position: relative;
 	top: 1px;
 }
+.dropdown-item {
+	cursor: pointer;
+}
 .monospace-text {
 	font-family: 'SF Mono', Menlo, monospace;
 }
