@@ -265,9 +265,12 @@ body {
 	list-style: none;
 }
 .docs-content-section {
-	padding: 4rem 1rem;
+	padding: 0 1rem;
+	padding-bottom: 2rem;
 }
-
+.breadcrumbs {
+	margin-top: 84px
+}
 .page-nav-wrapper {
 	border-right: 1px solid #eaecee;
 }

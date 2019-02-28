@@ -1,3 +1,13 @@
+/* Prevent header from covering hash tag links */
+h1::before, h2::before, h3::before, h4::before, h5::before {
+  display: block;
+  content: " ";
+  margin-top: -90px;
+  height: 90px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 /* Line break that is only visible, but not copy-pasted. Used for terminal commands. */
 .virtual-br::before {
   content: "\A";
