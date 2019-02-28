@@ -152,7 +152,7 @@
 					<nav id="breadcrumbs" class="breadcrumbs">
 						{{range .Breadcrumbs}}
 						<a href="{{.URL}}" class="{{if .IsActive}}active{{end}}">{{.Label}}</a> {{if not .IsActive}}/{{end}}
-						{{end}}
+						{{end}} &nbsp;
 					</nav>
 					<div class="markdown-body">{{markdown .}}</div>
 					{{else}}
