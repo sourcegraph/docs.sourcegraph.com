@@ -10,10 +10,11 @@
 	{{if (or (not .Content) .ContentVersion)}}<meta name="robots" content="noindex">{{end}}
 </head>
 <body {{with .Content}}data-path="{{.Path}}"{{end}} class="theme theme-light">
-		<div class="global-navbar">
+		<div id="globalNav" class="global-navbar">
 			<input type="checkbox" id="nav-state" class="nav-state"/>
 			<div class="nav-content">
 				<div class="nav-container flex-container">
+					<div class="nav-header">
 					<a href="/" class="nav-logo" id="logo">
 						<img class="nav-logo-image" src="/assets/sourcegraph-logo-docs.svg">
 					</a>
@@ -35,6 +36,7 @@
 						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $currentReleaseVersion .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseVersion}}/{{.ContentPagePath}}">@{{$currentReleaseVersion}}<span class="current-branch">current</span></a>
 					  </div>
 					</div>
+				</div>
 					<span class="mobile-nav-button"></span>
 					<div class="nav">
 						<ul class="nav-link-container">
@@ -60,9 +62,15 @@
 							    const searchDropdownArea = document.getElementById("search-form");
 								const versionDropdownArea = document.getElementById("version-form");
 
+								// create const for navbar
+								const navArea = document.getElementById("globalNav");
+
 								// create consts for the actual dropdown element
 								const searchDropdown = document.getElementById("searchDropdown");
 								const versionDropdown = document.getElementById("versionDropdown");
+
+								// create const for navbar checkbox
+								const navState = document.getElementById("nav-state")
 
 							    let targetElement = e.target;
 
@@ -75,12 +83,21 @@
 										// If clicked area is in version dropdown remove all other dropdowns
 										searchDropdown.classList.remove("show");
 							            return;
-							        }
+							        } else if (targetElement == navArea) {
+										// Because this is ran after the other two check it is okay to close all dropdowns
+										// even through they are contained in nav.
+										versionDropdown.classList.remove("show");
+										searchDropdown.classList.remove("show");
+										return;
+									}
 							        targetElement = targetElement.parentNode;
 							    } while (targetElement);
 								// If clicked area is outside all dropdowns remove all other dropdowns
 								versionDropdown.classList.remove("show");
 								searchDropdown.classList.remove("show");
+
+								// Close dropdown on mobile
+								navState.checked = false;
 
 							});
 

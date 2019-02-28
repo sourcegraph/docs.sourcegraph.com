@@ -208,6 +208,14 @@ body {
 	top: 120px;
 	padding-left: 14px
 }
+.nav-header {
+	padding-top: 0.4rem;
+	padding-bottom: 0.4rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	white-space: nowrap;
+}
 .nav {
 	flex: 1 0;
 	padding-top: 0.4rem;
@@ -266,7 +274,7 @@ body {
 }
 .version-dropdown {
 	position: relative;
-	top: 2px;
+	top: 1px;
 }
 .monospace-text {
 	font-family: 'SF Mono', Menlo, monospace;
@@ -289,7 +297,7 @@ body {
 }
 
 /* Nav iOS */
-@media screen and (max-width: 950px)  {
+@media screen and (max-width: 1020px)  {
 	.nav-logo {
 		display: inline-block;
 		width: calc(100% - 60px);
