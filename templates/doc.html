@@ -24,14 +24,14 @@
 					  <div class="dropdown-menu show" aria-labelledby="dropdownMenu2">
 						<h6 class="dropdown-header">Sourcegraph version:</h6>
 						{{/* Update these after each release. */}}
-						{{$currentReleaseRevspec := "v3.2.0"}}
+						{{$previousRelease := "v3.0.1"}}
 						{{$currentReleaseVersion := "v3.1.0"}}
-						{{$nextReleaseVersion := "v3.3.0"}}
+						{{$nextReleaseVersion := "v3.2.0"}}
 						{{$masterVersion := "master"}}
 						{{.ContentVersion}}
 						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $masterVersion .ContentVersion ""}}active{{end}}" href="/@{{$masterVersion}}/{{.ContentPagePath}}">Master</a>
-						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $currentReleaseVersion .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseVersion}}/{{.ContentPagePath}}">{{$currentReleaseVersion}}</a>
-						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $currentReleaseRevspec .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$currentReleaseRevspec}}<span class="current-branch">current</span></a>
+						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $previousRelease .ContentVersion ""}}active{{end}}" href="/@{{$previousRelease}}/{{.ContentPagePath}}">{{$previousRelease}}</a>
+						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $currentReleaseVersion .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseVersion}}/{{.ContentPagePath}}">{{$currentReleaseVersion}}<span class="current-branch">current</span></a>
 						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $nextReleaseVersion .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseRevspec}}/{{.ContentPagePath}}">{{$nextReleaseVersion}}</a>
 					  </div>
 					</div>
