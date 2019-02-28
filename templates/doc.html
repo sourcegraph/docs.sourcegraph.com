@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset "layout.css"}}?6" />
 	<link rel="stylesheet" type="text/css" href="{{asset "content.css"}}?2" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
 	{{if (or (not .Content) .ContentVersion)}}<meta name="robots" content="noindex">{{end}}
 </head>
 <body {{with .Content}}data-path="{{.Path}}"{{end}} class="theme theme-light">

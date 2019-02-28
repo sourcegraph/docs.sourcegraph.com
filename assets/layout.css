@@ -17,8 +17,8 @@ body {
 	display: block;
 	position: fixed;
 	top: 0;
-	left: 0;
-	right: 0;
+	left:0;
+	right:0;
 	background-color: #FFFFFF;
 }
 
@@ -32,6 +32,14 @@ body {
 	height: 100%;
 	padding: 0 1rem;
 	border-bottom: 1px solid #eaecee;
+
+}
+/* devices with notch support */
+@supports(padding: max(1rem)) {
+    .nav-content {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
 }
 .docs-content {
 	width: 100%;
@@ -304,10 +312,13 @@ body {
 }
 .page-nav-wrapper {
 	border-right: 1px solid #eaecee;
+	padding-left: env(safe-area-inset-left);
 }
-
+/* devices with notch support */
+/* Extra tags are not needed for page-nav-wrapper because the value is zero */
 .nav-state, .mobile-nav-button {
 	display: none;
+
 }
 .version-dropdown {
 	position: relative;
@@ -337,6 +348,7 @@ body {
 }
 
 /* Nav iOS */
+
 @media screen and (max-width: 1020px)  {
 	.nav-logo {
 		display: inline-block;
@@ -350,6 +362,12 @@ body {
 		height: 50px;
 		width: 50px;
 		background-color: red !important;
+	}
+	/* devices with notch support */
+	@supports(right: max(1rem)) {
+		input[type=checkbox].nav-state, .mobile-nav-button {
+			right: max(1rem, env(safe-area-inset-right));
+		}
 	}
 	.nav-state {
 		display: none;
@@ -387,6 +405,13 @@ body {
 		padding: 2rem 1.5rem 1rem;
 		border-radius: 6px;
     }
+	/* devices with notch support */
+	@supports(left: max(.5rem)) {
+		.nav {
+			left: max(.5rem, env(safe-area-inset-left));
+	        right: max(.5rem, env(safe-area-inset-right));
+	    }
+	}
 	.nav-link-container {
 
 		display: block;
