@@ -265,6 +265,8 @@ body {
 	display: none;
 }
 .version-dropdown {
+	position: relative;
+	top: 2px;
 }
 .monospace-text {
 	font-family: 'SF Mono', Menlo, monospace;
