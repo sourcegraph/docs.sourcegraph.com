@@ -1,7 +1,7 @@
 {{define "root"}}
 <html>
 <head>
-	<title>{{with .Content}}{{.Doc.Title}}{{else}}Error{{end}} - Sourcegraph</title>
+	<title>{{with .Content}}{{.Doc.Title}}{{else}}Error{{end}} - Sourcegraph docs</title>
 	<link rel="stylesheet" href="https://sourcegraph.com/.assets/styles/style.bundle.css?ac455e123cc08d925d034277996624a2">
 	<link rel="stylesheet" type="text/css" href="{{asset "layout.css"}}?6" />
 	<link rel="stylesheet" type="text/css" href="{{asset "content.css"}}?2" />
@@ -141,6 +141,11 @@
 		<div id="page" class="docs-content">
 				<div class="nav-sticky-wrapper page-nav-wrapper column large-2 medium-3 small-hidden">
 					<div class="content-nav">
+						<ul class="content-nav-section content-nav-home">
+							<li>
+								<a class="content-nav-section-header" href="/">Docs home</a>
+							</li>
+						</ul>
 						<ul class="content-nav-section">
 					        <li>
 					            <a class="content-nav-section-header" href="#">Main section title</a>
@@ -371,6 +376,9 @@
 
 					{{with .Content}}
 					<nav id="breadcrumbs" class="breadcrumbs">
+						{{if eq (len .Breadcrumbs ) 0}}
+						<a href="/" class="active">Documentation</a> &nbsp;
+						{{end}}
 						{{range .Breadcrumbs}}
 						<a href="{{.URL}}" class="{{if .IsActive}}active{{end}}">{{.Label}}</a> {{if not .IsActive}}/{{end}}
 						{{end}} &nbsp;
@@ -378,9 +386,11 @@
 					<div class="markdown-body">{{markdown .}}</div>
 					{{else}}
 					{{if .ContentVersionNotFoundError}}
+					<nav id="breadcrumbs" class="breadcrumbs"/>
 					<h1>Version not found</h1>
 					<p>The version <code>{{.ContentVersion}}</code> was not found.</p>
 					{{else if .ContentPageNotFoundError}}
+					<nav id="breadcrumbs" class="breadcrumbs"/>
 					<h1>Page not found</h1>
 					<p>The page <code>{{.ContentPagePath}}</code> was not found.</p>
 					{{else}}error
@@ -416,7 +426,6 @@
 	*/}}
 	{{define "index"}}
 	{{with (or (and (eq (len .Doc.Tree) 1) (index .Doc.Tree 0).Children) .Doc.Tree)}}
-	<h4 class="visible-sm">{{$.Doc.Title}}</h4>
 	<h3 class="page-nav-title">On this page:</h3>
 	<ul>{{template "doc_nav" .}}</ul>
 	{{end}}
