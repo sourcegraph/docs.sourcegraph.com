@@ -21,11 +21,7 @@
 					</a>
 					<div id="version-form" class="dropdown version-dropdown">
 					  <button class="btn btn-outline dropdown-toggle monospace-text" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="toggleDropdown('versionDropdown')">
-					    @{{.ContentVersion}}
-						{{/* If no version is specified we are on the master branch */}}
-						{{if eq .ContentVersion ""}}
-							master
-						{{end}}
+					    @{{.ContentVersion}}{{/* If no version is specified we are on the master branch */}}{{if eq .ContentVersion ""}}master{{end}}
 					  </button>
 					  <div class="dropdown-menu" id="versionDropdown" aria-labelledby="Version Dropdown">
 						<h6 class="dropdown-header">Sourcegraph version:</h6>
@@ -137,6 +133,7 @@
 							  </div>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
