@@ -219,13 +219,76 @@ body {
 .content-nav {
 	position: sticky;
 	position: -webkit-sticky;
-	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 100%;
 	height: calc(100% - 73px);
 	margin-top: 73px;
-	padding-left: 14px;
-	padding-right: 8px;
 	padding-bottom: 2rem;
 	padding-top: 4px;
+}
+.content-nav-section {
+	list-style: none;
+	padding-left: 0;
+}
+.content-nav-section li {
+	list-style: none;
+}
+.content-nav  > ul {
+	border-top: 1px solid #dadada;
+	padding-left: 14px;
+	padding-right: 8px;
+	padding-top: .5rem;
+}
+.content-nav  > ul:first-of-type {
+	border-top: none;
+}
+.content-nav  > ul ul {
+	padding-left: 8px;
+}
+.content-nav-section-header {
+	font-size: 16px;
+	font-weight: 500;
+	color: #2c3850;
+}
+.content-nav-section-header:first-of-type {
+}
+.content-nav-section-group {
+		line-height: normal;
+}
+.content-nav-section-group > li {
+	margin-top: .35rem;
+	margin-bottom: .5rem;
+}
+.content-nav-section-group > li:first-of-type {
+	margin-top: .125rem;
+	margin-bottom: .25rem;
+}
+.content-nav-section-group > li > ul {
+	margin-top: .35rem;
+	padding-top: 0;
+}
+.content-nav-section-group > li > a {
+	font-size: 14px;
+	font-weight: 500;
+	color: #2c3850;
+}
+.content-nav-section-group > li > ul li {
+	padding-top:
+}
+.content-nav-section-subsection {
+	border-left: 1px solid #0d97ff;
+}
+.content-nav-section-subsection li {
+	padding-top: .25rem;
+}
+.content-nav-section-subsection > li:first-of-type {
+	padding-top: 0;
+}
+.content-nav-section-subsection a {
+	font-size: 12px;
+	font-weight: 400;
+	color: #2c3850;
 }
 .page-nav {
 	position: sticky;

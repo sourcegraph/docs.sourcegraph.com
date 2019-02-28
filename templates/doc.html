@@ -140,11 +140,103 @@
 		</div>
 		<div id="page" class="docs-content">
 				<div class="nav-sticky-wrapper page-nav-wrapper column large-2 medium-3 small-hidden">
-					<div class="content-nav" id="index">
-					    <ul class="section">
+					<div class="content-nav">
+						<ul class="content-nav-section">
 					        <li>
-					            <a href="#">Integrations</a>
-					            <ul class="section">
+					            <a class="content-nav-section-header" href="#">Main section title</a>
+					            <ul class="content-nav-section-group">
+					                <li>
+					                    <a href="#">Main section page</a>
+					                    <ul class="content-nav-section-subsection">
+					                        <li><a href="#">Main section sub-section</a></li>
+					                        <li>
+					                            <a href="#">Main section sub-section group title</a>
+					                            <ul >
+					                                <li><a href="#">AWS</a></li>
+					                                <li><a href="#">DigitalOcean</a></li>
+					                                <li><a href="#">Google Cloud</a></li>
+					                            </ul>
+					                        </li>
+					                        <li><a href="#">Main section sub-section page</a></li>
+					                    </ul>
+					                </li>
+									<li>
+										<a href="#">Another section group</a>
+										<ul class="content-nav-section-subsection">
+											<li><a href="#">Cluster</a></li>
+											<li>
+												<a href="#">Docker</a>
+												<ul>
+													<li><a href="#">AWS</a></li>
+													<li><a href="#">DigitalOcean</a></li>
+													<li><a href="#">Google Cloud</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Kubernetes</a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="#">Main section group with a Long title</a>
+										<ul class="content-nav-section-group">
+											<li><a href="#">Page link text</a></li>
+											<li><a href="#">Page link text</a></li>
+											<li><a href="#">Page link text</a></li>
+											<li><a href="#">Page link text</a></li>
+										</ul>
+									</li>
+					            </ul>
+					        </li>
+					    </ul>
+					    <ul class="content-nav-section">
+					        <li>
+					            <a class="content-nav-section-header" href="#">Admin</a>
+					            <ul class="content-nav-section-group">
+					                <li>
+					                    <a href="#">Install</a>
+					                    <ul class="content-nav-section-subsection">
+					                        <li><a href="#">Cluster</a></li>
+					                        <li>
+					                            <a href="#">Docker</a>
+					                            <ul >
+					                                <li><a href="#">AWS</a></li>
+					                                <li><a href="#">DigitalOcean</a></li>
+					                                <li><a href="#">Google Cloud</a></li>
+					                            </ul>
+					                        </li>
+					                        <li><a href="#">Kubernetes</a></li>
+					                    </ul>
+					                </li>
+									<li>
+										<a href="#">Another element</a>
+										<ul class="content-nav-section-subsection">
+											<li><a href="#">Cluster</a></li>
+											<li>
+												<a href="#">Docker</a>
+												<ul>
+													<li><a href="#">AWS</a></li>
+													<li><a href="#">DigitalOcean</a></li>
+													<li><a href="#">Google Cloud</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Kubernetes</a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="#">Integrations</a>
+										<ul class="content-nav-section-group">
+											<li><a href="#">Page link text</a></li>
+											<li><a href="#">Page link text</a></li>
+											<li><a href="#">Page link text</a></li>
+											<li><a href="#">Page link text</a></li>
+										</ul>
+									</li>
+					            </ul>
+					        </li>
+					    </ul>
+						<ul class="content-nav-section">
+					        <li>
+					            <a class="content-nav-section-header" href="#">Integrations</a>
+					            <ul class="content-nav-section-group">
 					                <li><a href="#">Page link text</a></li>
 					                <li><a href="#">Page link text</a></li>
 					                <li><a href="#">Page link text</a></li>
@@ -152,17 +244,17 @@
 					            </ul>
 					        </li>
 					    </ul>
-					    <ul class="section">
+					    <ul class="content-nav-section">
 					        <li>
-					            <a href="#">Admin</a>
-					            <ul class="section">
+					            <a class="content-nav-section-header" href="#">Admin</a>
+					            <ul class="content-nav-section-group">
 					                <li>
 					                    <a href="#">Install</a>
-					                    <ul class="section">
+					                    <ul class="content-nav-section-subsection">
 					                        <li><a href="#">Cluster</a></li>
 					                        <li>
 					                            <a href="#">Docker</a>
-					                            <ul class="section">
+					                            <ul>
 					                                <li><a href="#">AWS</a></li>
 					                                <li><a href="#">DigitalOcean</a></li>
 					                                <li><a href="#">Google Cloud</a></li>
@@ -174,10 +266,10 @@
 					            </ul>
 					        </li>
 					    </ul>
-						<ul class="section">
+						<ul class="content-nav-section">
 					        <li>
-					            <a href="#">Integrations</a>
-					            <ul class="section">
+					            <a class="content-nav-section-header" href="#">Integrations</a>
+					            <ul class="content-nav-section-group">
 					                <li><a href="#">Page link text</a></li>
 					                <li><a href="#">Page link text</a></li>
 					                <li><a href="#">Page link text</a></li>
@@ -185,17 +277,28 @@
 					            </ul>
 					        </li>
 					    </ul>
-					    <ul class="section">
+						<ul class="content-nav-section">
 					        <li>
-					            <a href="#">Admin</a>
-					            <ul class="section">
+					            <a class="content-nav-section-header" href="#">Integrations</a>
+					            <ul class="content-nav-section-group">
+					                <li><a href="#">Page link text</a></li>
+					                <li><a href="#">Page link text</a></li>
+					                <li><a href="#">Page link text</a></li>
+					                <li><a href="#">Page link text</a></li>
+					            </ul>
+					        </li>
+					    </ul>
+					    <ul class="content-nav-section">
+					        <li>
+					            <a class="content-nav-section-header" href="#">Admin</a>
+					            <ul class="content-nav-section-group">
 					                <li>
 					                    <a href="#">Install</a>
-					                    <ul class="section">
+					                    <ul class="content-nav-section-subsection">
 					                        <li><a href="#">Cluster</a></li>
 					                        <li>
 					                            <a href="#">Docker</a>
-					                            <ul class="section">
+					                            <ul>
 					                                <li><a href="#">AWS</a></li>
 					                                <li><a href="#">DigitalOcean</a></li>
 					                                <li><a href="#">Google Cloud</a></li>
@@ -207,10 +310,10 @@
 					            </ul>
 					        </li>
 					    </ul>
-						<ul class="section">
+						<ul class="content-nav-section">
 					        <li>
-					            <a href="#">Integrations</a>
-					            <ul class="section">
+					            <a class="content-nav-section-header" href="#">Integrations</a>
+					            <ul class="content-nav-section-group">
 					                <li><a href="#">Page link text</a></li>
 					                <li><a href="#">Page link text</a></li>
 					                <li><a href="#">Page link text</a></li>
@@ -218,17 +321,28 @@
 					            </ul>
 					        </li>
 					    </ul>
-					    <ul class="section">
+						<ul class="content-nav-section">
 					        <li>
-					            <a href="#">Admin</a>
-					            <ul class="section">
+					            <a class="content-nav-section-header" href="#">Integrations</a>
+					            <ul class="content-nav-section-group">
+					                <li><a href="#">Page link text</a></li>
+					                <li><a href="#">Page link text</a></li>
+					                <li><a href="#">Page link text</a></li>
+					                <li><a href="#">Page link text</a></li>
+					            </ul>
+					        </li>
+					    </ul>
+					    <ul class="content-nav-section">
+					        <li>
+					            <a class="content-nav-section-header" href="#">Admin</a>
+					            <ul class="content-nav-section-group">
 					                <li>
 					                    <a href="#">Install</a>
-					                    <ul class="section">
+					                    <ul class="content-nav-section-subsection">
 					                        <li><a href="#">Cluster</a></li>
 					                        <li>
 					                            <a href="#">Docker</a>
-					                            <ul class="section">
+					                            <ul>
 					                                <li><a href="#">AWS</a></li>
 					                                <li><a href="#">DigitalOcean</a></li>
 					                                <li><a href="#">Google Cloud</a></li>
@@ -240,102 +354,14 @@
 					            </ul>
 					        </li>
 					    </ul>
-						<ul class="section">
+						<ul class="content-nav-section">
 					        <li>
-					            <a href="#">Integrations</a>
-					            <ul class="section">
+					            <a class="content-nav-section-header" href="#">Integrations</a>
+					            <ul class="content-nav-section-group">
 					                <li><a href="#">Page link text</a></li>
 					                <li><a href="#">Page link text</a></li>
 					                <li><a href="#">Page link text</a></li>
 					                <li><a href="#">Page link text</a></li>
-					            </ul>
-					        </li>
-					    </ul>
-					    <ul class="section">
-					        <li>
-					            <a href="#">Admin</a>
-					            <ul class="section">
-					                <li>
-					                    <a href="#">Install</a>
-					                    <ul class="section">
-					                        <li><a href="#">Cluster</a></li>
-					                        <li>
-					                            <a href="#">Docker</a>
-					                            <ul class="section">
-					                                <li><a href="#">AWS</a></li>
-					                                <li><a href="#">DigitalOcean</a></li>
-					                                <li><a href="#">Google Cloud</a></li>
-					                            </ul>
-					                        </li>
-					                        <li><a href="#">Kubernetes</a></li>
-					                    </ul>
-					                </li>
-					            </ul>
-					        </li>
-					    </ul>
-						<ul class="section">
-					        <li>
-					            <a href="#">Integrations</a>
-					            <ul class="section">
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					            </ul>
-					        </li>
-					    </ul>
-					    <ul class="section">
-					        <li>
-					            <a href="#">Admin</a>
-					            <ul class="section">
-					                <li>
-					                    <a href="#">Install</a>
-					                    <ul class="section">
-					                        <li><a href="#">Cluster</a></li>
-					                        <li>
-					                            <a href="#">Docker</a>
-					                            <ul class="section">
-					                                <li><a href="#">AWS</a></li>
-					                                <li><a href="#">DigitalOcean</a></li>
-					                                <li><a href="#">Google Cloud</a></li>
-					                            </ul>
-					                        </li>
-					                        <li><a href="#">Kubernetes</a></li>
-					                    </ul>
-					                </li>
-					            </ul>
-					        </li>
-					    </ul>
-						<ul class="section">
-					        <li>
-					            <a href="#">Integrations</a>
-					            <ul class="section">
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					            </ul>
-					        </li>
-					    </ul>
-					    <ul class="section">
-					        <li>
-					            <a href="#">Admin</a>
-					            <ul class="section">
-					                <li>
-					                    <a href="#">Install</a>
-					                    <ul class="section">
-					                        <li><a href="#">Cluster</a></li>
-					                        <li>
-					                            <a href="#">Docker</a>
-					                            <ul class="section">
-					                                <li><a href="#">AWS</a></li>
-					                                <li><a href="#">DigitalOcean</a></li>
-					                                <li><a href="#">Google Cloud</a></li>
-					                            </ul>
-					                        </li>
-					                        <li><a href="#">Kubernetes</a></li>
-					                    </ul>
-					                </li>
 					            </ul>
 					        </li>
 					    </ul>
