@@ -271,15 +271,15 @@ a.content-nav-section-header{
 		line-height: normal;
 }
 .content-nav-section-group > li {
-	margin-top: .35rem;
+	margin-top: .5rem;
 	margin-bottom: .5rem;
 }
 .content-nav-section-group > li:first-of-type {
-	margin-top: .125rem;
+	margin-top: .25rem;
 	margin-bottom: .25rem;
 }
 .content-nav-section-group > li > ul {
-	margin-top: .35rem;
+	margin-top: .5rem;
 	padding-top: 0;
 }
 .content-nav-section-group > li > a {
