@@ -248,7 +248,6 @@ body {
 }
 .content-nav  > ul {
 	border-top: 1px solid #eaeaea;
-	padding-left: 14px;
 	padding-right: 8px;
 	padding-top: .5rem;
 }
@@ -256,6 +255,9 @@ body {
 	border-top: none;
 }
 .content-nav  > ul ul {
+	padding-left: 0;
+}
+.content-nav  > ul li {
 	padding-left: 10px;
 }
 a.content-nav-section-header{
@@ -289,15 +291,16 @@ a.content-nav-section-header{
 }
 .content-nav-section-subsection {
 	border-left: 1px solid #0d97ff;
+	margin-bottom: 1rem;
 }
 .content-nav-section-subsection li {
-	padding-top: .25rem;
+	padding-top: .5rem;
 }
 .content-nav-section-subsection > li:first-of-type {
 	padding-top: 0;
 }
 .content-nav-section-subsection a {
-	font-size: 12px;
+	font-size: 14px;
 	font-weight: 400;
 	color: #2c3850;
 }

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>{{with .Content}}{{.Doc.Title}}{{else}}Error{{end}} - Sourcegraph docs</title>
-	<link rel="stylesheet" href="https://sourcegraph.com/.assets/styles/style.bundle.css?ac455e123cc08d925d034277996624a2">
+	<link rel="stylesheet" href="https://sourcegraph.com/.assets/styles/style.bundle.css">
 	<link rel="stylesheet" type="text/css" href="{{asset "layout.css"}}?6" />
 	<link rel="stylesheet" type="text/css" href="{{asset "content.css"}}?2" />
 
@@ -109,7 +109,7 @@
 									location.href = 'https://www.duckduckgo.com/site%3Adocs.sourcegraph.com '+encodeURIComponent(document.getElementById('search').value);
 									return false;
 								} else if (searchProvider === "sourcegraph") {
-									location.href = 'https://sourcegraph.com/search?q=repo:%5Egithub%5C.com/sourcegraph/sourcegraph+file:doc/+'+encodeURIComponent(document.getElementById('search').value);
+									location.href = 'https://sourcegraph.com/search?q=repo:%5Egithub%5C.com/sourcegraph/sourcegraph+file:doc/+file:%5C.md%24+'+encodeURIComponent(document.getElementById('search').value);
 									return false;
 
 								} else {
