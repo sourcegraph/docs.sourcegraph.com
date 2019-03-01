@@ -27,11 +27,23 @@
 						</button>
 						<div class="dropdown-menu" id="versionDropdown" aria-labelledby="Version Dropdown">
 							<h6 class="dropdown-header">Sourcegraph version:</h6>
+							
 							{{/* Update these after each release. */}}
-							{{$previousRelease := "v3.0.1"}}
-							{{$currentReleaseVersion := "v3.1.0"}}
+							{{/* You do not have to use all of these. Simply remove the A tag to remove it from the dropdown. */}}
+
+							{{$legacyRelease2136 := "v2.13.6"}}
+							{{$previousRelease := "v3.0.0"}}
+							{{$previousDotRelease := "v3.0.1"}}
+							{{$currentReleaseVersion := "v3.1.1"}}
+
 							<a rel="nofollow" class="dropdown-item monospace-text {{if eq .ContentVersion ""}}active{{end}}" href="/{{.ContentPagePath}}">@master</a>
-							<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $previousRelease .ContentVersion ""}}active{{end}}" href="/@{{$previousRelease}}/{{.ContentPagePath}}">@{{$previousRelease}}</a>
+
+							<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $legacyRelease2136 .ContentVersion ""}}active{{end}}" href="/@{{$legacyRelease2136}}/{{.ContentPagePath}}">@{{$legacyRelease2136}}</a>
+
+							<!-- <a rel="nofollow" class=" dropdown-item monospace-text {{if eq $previousRelease .ContentVersion ""}}active{{end}}" href="/@{{$previousRelease}}/{{.ContentPagePath}}">@{{$previousRelease}}</a> -->
+
+							<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $previousDotRelease .ContentVersion ""}}active{{end}}" href="/@{{$previousDotRelease}}/{{.ContentPagePath}}">@{{$previousDotRelease}}</a>
+
 							<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $currentReleaseVersion .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseVersion}}/{{.ContentPagePath}}">@{{$currentReleaseVersion}}<span class="current-branch">current</span></a>
 						</div>
 					</div>
