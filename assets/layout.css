@@ -307,11 +307,14 @@ body {
 	input[type=checkbox].nav-state, .mobile-nav-button {
 		position: absolute;
 		display: block;
-		top: 5px;
+		top: 4px;
 		right: 1rem;
 		height: 50px;
 		width: 50px;
-		background-color: red !important;
+		background-size: 80%;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath fill='%23babcbe' d='M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z' /%3E%3C/svg%3E");
 	}
 	/* devices with notch support */
 	@supports(right: max(1rem)) {
@@ -545,7 +548,7 @@ a.content-nav-section-header{
 .content-nav-section.expandable .close--icon svg path{
 	transition: transform 200ms ease;
 	transform-origin: 50% 50%;
-	transform: rotate(45deg);
+	transform: rotate(-45deg);
 
 }
 .content-nav-section.expandable.expanded .close--icon svg path {
@@ -573,8 +576,9 @@ a.content-nav-section-header{
 	display: block;
 	right: 0;
 	position: absolute;
-	background: red;
 }
+
+
 
 /* Page (Right Hand) Nav */
 
