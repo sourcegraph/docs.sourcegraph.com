@@ -477,6 +477,8 @@ body {
 	padding-left: 10px;
 }
 a.content-nav-section-header{
+	display: block;
+	width: 100%;
 	font-size: 16px;
 	font-weight: 500;
 	color: #242E42 !important;
