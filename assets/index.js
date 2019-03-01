@@ -3,7 +3,7 @@
 
 // Toggle search dropdown on button click
 // Accepts the ID for the dropdown to toggle
-function toggleDropdown(dropdownName) {
+const toggleDropdown = (dropdownName) => {
 	const dropdown = document.getElementById(dropdownName);
 	dropdown.classList.toggle("show");
 }
@@ -44,6 +44,7 @@ document.addEventListener("click", (e) => {
 		}
 		targetElement = targetElement.parentNode;
 	} while (targetElement);
+
 	// If clicked area is outside all dropdowns remove all other dropdowns
 	versionDropdown.classList.remove("show");
 	searchDropdown.classList.remove("show");
@@ -53,8 +54,8 @@ document.addEventListener("click", (e) => {
 
 });
 
-// Search provider
-function searchDocsWithProvider(searchProvider) {
+// Search with specific search provider
+const searchDocsWithProvider = (searchProvider) => {
 	if (searchProvider === "google") {
 		location.href = 'https://www.google.com/search?ie=UTF-8&q=site%3Adocs.sourcegraph.com+ '+encodeURIComponent(document.getElementById('search').value);
 		return false;
@@ -69,4 +70,61 @@ function searchDocsWithProvider(searchProvider) {
 		console.error("searchProvider not valid")
 	}
 
+}
+
+// Open and close nav section
+const toggleNavSection = (navSection) => {
+	const section = document.getElementById(navSection);
+	section.classList.toggle("expanded");
+}
+
+// Only open nav section
+const openNavSection = (navSection) => {
+	const section = document.getElementById(navSection);
+	if (section.classList.contains('expanded')) {
+		// Section is already expanded
+		return;
+	} else {
+		section.classList.add("expanded");
+		return;
+	}
+}
+
+// Open nav section based off current page
+const breadcrumbNavToggle = () => {
+	// Check if breadcrumb is defined
+	if (breadcrumbs.length === 0) {
+		// If breadcrumb isn't defined open the user nav section (on by default)
+		toggleNavSection('contentNavUser');
+		return;
+	}
+
+	var currentCatagory = breadcrumbs[1].Label;
+
+	// Open nav pannel based off current catagory
+	switch(currentCatagory) {
+		case "user":
+			openNavSection('contentNavUser');
+			break;
+		case "admin":
+			openNavSection('contentNavAdmin');
+			break;
+		case "extensions":
+			openNavSection('contentNavExtension');
+			break;
+		case "dev":
+			openNavSection('contentNavDev');
+			break;
+		case "api":
+			openNavSection('contentNavAPI');
+			break;
+		case "integration":
+			openNavSection('contentNavIntegration');
+			break;
+		default:
+			openNavSection('contentNavUser');
+			break;
+	}
+
+	// Check if breadcrumb is on homepage
 }

@@ -435,11 +435,14 @@ body {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	width: 100%;
-	height: calc(100% - 73px);
-	margin-top: 73px;
+	height: calc(100% - 70px);;
 	padding-bottom: 2rem;
 	padding-top: 0;
+	max-height: calc(100vh - 70px);
+	top: 70px;
+	padding-top: 4px;
 }
+
 .content-nav-section {
 	list-style: none;
 	padding-left: 0;
@@ -517,7 +520,59 @@ a.content-nav-section-header{
 	font-weight: 400;
 	color: #2c3850;
 }
+.content-nav-section:last-of-type {
+	border-bottom: 1px solid #eaeaea;
+	padding-bottom: .6rem;
+}
+.content-nav-section.expandable {
+	position: relative;
+	margin-bottom: .6rem;
+	transition: height 350ms ease;
+}
+.content-nav-section.expandable .close--icon, .content-nav-section.expandable .close--icon svg {
+	height: 16px;
+	width: 16px;
+}
+.content-nav-section.expandable .close--icon {
+	z-index: 800;
+	top: 11px;
+	display: block;
+	right: .5rem;
+	position: absolute;
+}
+.content-nav-section.expandable .close--icon svg path{
+	transition: transform 200ms ease;
+	transform-origin: 50% 50%;
+	transform: rotate(45deg);
 
+}
+.content-nav-section.expandable.expanded .close--icon svg path {
+	transform-origin: 50% 50%;
+	transform: rotate(0deg);
+
+}
+.content-nav-section.expandable > li {
+	transition: all 200ms ease;
+	overflow: hidden;
+	max-height: 22px;
+}
+.content-nav-section.expandable.expanded > li {
+	overflow: hidden;
+	max-height: 100%;
+	height: auto;
+}
+.content-nav-button {
+	cursor: pointer;
+	z-index: 900;
+	opacity: 0;
+	top: 0px;
+	width: 34px;
+	height: 40px;
+	display: block;
+	right: 0;
+	position: absolute;
+	background: red;
+}
 
 /* Page (Right Hand) Nav */
 
