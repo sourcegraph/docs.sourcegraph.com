@@ -1,4 +1,5 @@
 /* Prevent header from covering hash tag links */
+/* This prevents the header from being covered by the nav bar when loading hash links */
 h1::before, h2::before, h3::before, h4::before, h5::before {
   display: block;
   content: " ";
@@ -26,7 +27,6 @@ h1::before, h2::before, h3::before, h4::before, h5::before {
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
   color: #24292e;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -334,16 +334,14 @@ h1::before, h2::before, h3::before, h4::before, h5::before {
 }
 
 .markdown-body code {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
-    monospace;
+  font-family: "SF Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 12px;
 }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
-    monospace;
+  font-family: "SF Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   font-size: 12px;
 }
 
@@ -419,6 +417,7 @@ h1::before, h2::before, h3::before, h4::before, h5::before {
   font-size: 16px;
 }
 /* Firefox fix for misaligned hash link */
+/* Prevents hash marks for links from being under the content on firefox */
 @-moz-document url-prefix() {
   .markdown-body .anchor::before {
     top: -26px;
@@ -692,8 +691,7 @@ h1::before, h2::before, h3::before, h4::before, h5::before {
 .markdown-body kbd {
   display: inline-block;
   padding: 3px 5px;
-  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
-    monospace;
+  font: 11px "SF Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   line-height: 10px;
   color: #444d56;
   vertical-align: middle;

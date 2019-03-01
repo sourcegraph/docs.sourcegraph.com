@@ -1,5 +1,4 @@
-
-
+/* Root Layout */
 body {
 	display: block !important;
 	flex: none !important;
@@ -12,44 +11,14 @@ body {
 	margin: 0;
 
 }
-
-.global-navbar {
-	display: block;
-	position: fixed;
-	top: 0;
-	left:0;
-	right:0;
-	background-color: #FFFFFF;
-}
-
 .section-content {
 	display: block;
 	position: relative;
 	margin: auto;
 	max-width: 980px;
 }
-.nav-content {
-	height: 100%;
-	padding: 0 1rem;
-	border-bottom: 1px solid #eaecee;
 
-}
-/* devices with notch support */
-@supports(padding: max(1rem)) {
-    .nav-content {
-        padding-left: max(1rem, env(safe-area-inset-left));
-        padding-right: max(1rem, env(safe-area-inset-right));
-    }
-}
-.docs-content {
-	width: 100%;
-	/*
-		Set min height of content to viewport height minus the footer.
-		This prevents small pages from having footer above bottom of page.
-	 */
-	min-height: calc(100vh - 340px);
-	position: relative;
-}
+
 .column {
 	box-sizing: border-box;
 	position: relative;
@@ -212,10 +181,254 @@ body {
 	justify-content: between;
 	height: 100%;
 }
+
+/* Global Nav Layout */
+
+.global-navbar {
+	display: block;
+	position: fixed;
+	top: 0;
+	left:0;
+	right:0;
+	background-color: #FFFFFF;
+}
+
+.nav-content {
+	height: 100%;
+	padding: 0 1rem;
+	border-bottom: 1px solid #eaecee;
+
+}
+/* devices with notch support */
+@supports(padding: max(1rem)) {
+    .nav-content {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+}
+
+
+.nav-header {
+	padding-top: 0.4rem;
+	padding-bottom: 0.4rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	white-space: nowrap;
+}
+.nav-links {
+	flex: 1 0;
+	padding-top: 0.4rem;
+	padding-bottom: 0.4rem;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-right: 0.25rem;
+	white-space: nowrap;
+}
+.nav-logo {
+	flex: 0 0;
+	display: flex;
+	align-items: center;
+	white-space: nowrap;
+	color: inherit;
+	text-decoration: none;
+	padding-top: 0.75rem;
+	padding-bottom: 0.75rem;
+	margin-right: 0.5rem;
+	text-align: left;
+}
+.nav-logo-image {
+	width: 220px;
+	text-align: left;
+	padding-top: 5px;
+	padding-bottom: 4px;
+}
+.nav-logo-image-small {
+	width: 80px;
+}
+.form-inline {
+	margin: 0;
+	align-self: flex-end;
+}
+.nav-search-button {
+	margin-left: .5rem;
+	height: 34px;
+}
+.nav-link-container {
+	list-style: none;
+	margin: 0;
+}
+.nav-link {
+	margin-left: 0;
+	float: left;
+	list-style: none;
+}
+
+
+.nav-state, .mobile-nav-button {
+	display: none;
+
+}
+.version-dropdown {
+	position: relative;
+	top: 1px;
+}
+.dropdown-item {
+	cursor: pointer;
+}
+.monospace-text {
+	font-family: 'SF Mono', Menlo, monospace;
+}
+.current-branch {
+	position: absolute;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+	font-size: 8px;
+	letter-spacing: .04rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	border: 1.5px solid #566e9f;
+	padding: 2px 4px;
+	border-radius: 2px;
+	margin-left: 12px;
+	margin-top: 1px;
+}
+.active .current-branch, a:active .current-branch {
+	border: 1.5px solid #ffffff;
+}
+
+/* Nav iOS */
+
+@media screen and (max-width: 1020px)  {
+	.nav-logo {
+		display: inline-block;
+		width: calc(100% - 60px);
+	}
+	input[type=checkbox].nav-state, .mobile-nav-button {
+		position: absolute;
+		display: block;
+		top: 5px;
+		right: 1rem;
+		height: 50px;
+		width: 50px;
+		background-color: red !important;
+	}
+	/* devices with notch support */
+	@supports(right: max(1rem)) {
+		input[type=checkbox].nav-state, .mobile-nav-button {
+			right: max(1rem, env(safe-area-inset-right));
+		}
+	}
+	.nav-state {
+		display: none;
+		z-index: 9999;
+		opacity: 0;
+	}
+	.mobile-nav-button {
+		z-index: 9998;
+	}
+	.nav-state:not(:checked) + .nav-content .nav-container  .nav-links {
+		top: -100%;
+		opacity: 0;
+	}
+	.nav-state:checked +  .nav-content .nav-container  .nav-links {
+		display: flex;
+		opacity: 1;
+	}
+	.nav-container {
+		display: block;
+		z-index: 9999;
+	}
+    .nav-links {
+        transition: opacity .3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+		display: flex;
+      	flex-flow: column;
+		top: 74px;
+		position: fixed;
+		z-index: 9990;
+		background: #ffffff;
+		box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.20);
+		right: .5rem;
+		left: .5rem;
+		padding: 2rem 1.5rem 1rem;
+		border-radius: 6px;
+    }
+	/* devices with notch support */
+	@supports(left: max(.5rem)) {
+		.nav-links {
+			left: max(.5rem, env(safe-area-inset-left));
+	        right: max(.5rem, env(safe-area-inset-right));
+	    }
+	}
+	.nav-link-container {
+
+		display: block;
+		order: 2;
+		width: 100%;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+		padding-top: .5rem;
+		padding-bottom: 0;
+	}
+	.nav-link {
+		margin: 1rem 0;
+		padding: 0;
+		display: block;
+		float: none;
+		width: 100%;
+		height: 32px;
+	}
+	.nav-link a {
+		display: block;
+		text-align: center;
+		padding: 7px 4px;
+		width: 100%;
+		background-color: #e1e6ef;
+		border: 1px solid #e1e6ef;
+		border-radius: 2px;
+		color: #212529;
+		transition: background-color 200ms ease;
+	}
+	.nav-link a:hover {
+		text-decoration: none;
+		background-color: #c9d1e2;
+	}
+	.form-inline {
+		display: flex;
+		flex-grow: 1;
+		justify-content: space-between;
+		width: 100%;
+		align-self: flex-start;
+		flex-wrap: nowrap;
+		flex-shrink: 1;
+		order: 1;
+	}
+	.nav-search {
+		display: flex;
+		flex-grow: 1;
+		width: auto;
+		min-width: 0;
+	}
+	.nav-search-button {
+		display: inline-block;
+		margin-right: 0;
+	}
+}
+
+
+
+
+/* Wrapper for nav components */
+
 .nav-sticky-wrapper {
 	height: 100%;
 	position: absolute;
 }
+
+/* Content (Left Hand) Nav */
 .content-nav {
 	position: sticky;
 	position: -webkit-sticky;
@@ -304,6 +517,10 @@ a.content-nav-section-header{
 	font-weight: 400;
 	color: #2c3850;
 }
+
+
+/* Page (Right Hand) Nav */
+
 .page-nav {
 	position: sticky;
 	position: -webkit-sticky;
@@ -324,306 +541,76 @@ a.content-nav-section-header{
 	display: inline-block;
 	margin-bottom: 6px;
 }
-.nav-header {
-	padding-top: 0.4rem;
-	padding-bottom: 0.4rem;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	white-space: nowrap;
-}
-.nav {
-	flex: 1 0;
-	padding-top: 0.4rem;
-	padding-bottom: 0.4rem;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	margin-right: 0.25rem;
-	white-space: nowrap;
-}
-.nav-logo {
-	flex: 0 0;
-	display: flex;
-	align-items: center;
-	white-space: nowrap;
-	color: inherit;
-	text-decoration: none;
-	padding-top: 0.75rem;
-	padding-bottom: 0.75rem;
-	margin-right: 0.5rem;
-	text-align: left;
-}
-.nav-logo-image {
-	width: 220px;
-	text-align: left;
-	padding-top: 5px;
-	padding-bottom: 4px;
-}
-.nav-logo-image-small {
-	width: 80px;
-}
-.form-inline {
-	margin: 0;
-	align-self: flex-end;
-}
-.nav-search-button {
-	margin-left: .5rem;
-	height: 34px;
-}
-.nav-link-container {
-	list-style: none;
-	margin: 0;
-}
-.nav-link {
-	margin-left: 0;
-	float: left;
-	list-style: none;
-}
-.docs-content-section {
-	padding: 0 1rem;
-	padding-bottom: 2rem;
-}
-.breadcrumbs {
-	margin-top: 84px
-}
+
+
 .page-nav-wrapper {
 	border-right: 1px solid #eaecee;
 	padding-left: env(safe-area-inset-left);
 }
-/* devices with notch support */
-/* Extra tags are not needed for page-nav-wrapper because the value is zero */
-.nav-state, .mobile-nav-button {
-	display: none;
 
-}
-.version-dropdown {
-	position: relative;
-	top: 1px;
-}
-.dropdown-item {
-	cursor: pointer;
-}
-.monospace-text {
-	font-family: 'SF Mono', Menlo, monospace;
-}
-.current-branch {
-	position: absolute;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-	font-size: 8px;
-	letter-spacing: .04rem;
-	font-weight: 700;
-	text-transform: uppercase;
-	border: 1.5px solid #566e9f;
-	padding: 2px 4px;
-	border-radius: 2px;
-	margin-left: 12px;
-	margin-top: 1px;
-}
-.active .current-branch, a:active .current-branch {
-	border: 1.5px solid #ffffff;
-}
-
-/* Nav iOS */
-
-@media screen and (max-width: 1020px)  {
-	.nav-logo {
-		display: inline-block;
-		width: calc(100% - 60px);
-	}
-	input[type=checkbox].nav-state, .mobile-nav-button {
-		position: absolute;
-		display: block;
-		top: 5px;
-		right: 1rem;
-		height: 50px;
-		width: 50px;
-		background-color: red !important;
-	}
-	/* devices with notch support */
-	@supports(right: max(1rem)) {
-		input[type=checkbox].nav-state, .mobile-nav-button {
-			right: max(1rem, env(safe-area-inset-right));
-		}
-	}
-	.nav-state {
-		display: none;
-		z-index: 9999;
-		opacity: 0;
-	}
-	.mobile-nav-button {
-		z-index: 9998;
-	}
-	.nav-state:not(:checked) + .nav-content .nav-container  .nav {
-		top: -100%;
-		opacity: 0;
-	}
-	.nav-state:checked +  .nav-content .nav-container  .nav {
-		display: flex;
-		opacity: 1;
-	}
-	.nav-container {
-		display: block;
-		z-index: 9999;
-	}
-    .nav {
-        transition: opacity .3s ease-in-out;
-        position: relative;
-        overflow: hidden;
-		display: flex;
-      	flex-flow: column;
-		top: 74px;
-		position: fixed;
-		z-index: 9990;
-		background: #ffffff;
-		box-shadow: 0 0 18px 0 rgba(0, 0, 0, 0.20);
-		right: .5rem;
-		left: .5rem;
-		padding: 2rem 1.5rem 1rem;
-		border-radius: 6px;
-    }
-	/* devices with notch support */
-	@supports(left: max(.5rem)) {
-		.nav {
-			left: max(.5rem, env(safe-area-inset-left));
-	        right: max(.5rem, env(safe-area-inset-right));
-	    }
-	}
-	.nav-link-container {
-
-		display: block;
-		order: 2;
-		width: 100%;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-		padding-top: .5rem;
-		padding-bottom: 0;
-	}
-	.nav-link {
-		margin: 1rem 0;
-		padding: 0;
-		display: block;
-		float: none;
-		width: 100%;
-		height: 32px;
-	}
-	.nav-link a {
-		display: block;
-		text-align: center;
-		padding: 7px 4px;
-		width: 100%;
-		background-color: #e1e6ef;
-		border: 1px solid #e1e6ef;
-		border-radius: 2px;
-		color: #212529;
-		transition: background-color 200ms ease;
-	}
-	.nav-link a:hover {
-		text-decoration: none;
-		background-color: #c9d1e2;
-	}
-	.form-inline {
-		display: flex;
-		flex-grow: 1;
-		justify-content: space-between;
-		width: 100%;
-		align-self: flex-start;
-		flex-wrap: nowrap;
-		flex-shrink: 1;
-		order: 1;
-	}
-	.nav-search {
-		display: flex;
-		flex-grow: 1;
-		width: auto;
-		min-width: 0;
-	}
-	.nav-search-button {
-		display: inline-block;
-		margin-right: 0;
-	}
-}
-
-/* PAGE */
-@media (max-width: 900px) {
-	.visible-sm { display: unset; }
-	.visible-lg { display: none; }
-}
-@media (min-width: 900px) {
-	.visible-sm { display: none; }
-	.visible-lg { display: unset; }
-
-}
-
-/* INDEX */
-:root {
-	--index-border-color: #dadcdf;
-}
-#index {
+.page-nav  {
 	font-size: 90%;
 	line-height: 24px;
 }
-#index > h3.version {
-	font-weight: bold;
-	font-size: 100%;
-	opacity: 0.7;
-	margin-bottom: 0;
-}
-#index > h4 {
-	opacity: 0.8;
-	font-weight: normal;
-	margin-bottom: 0;
-	padding-bottom: 0;
-}
-/* These ul styles are copied to https://github.com/sourcegraph/sourcegraph DocSitePage.scss. They should be kept in sync. */
-#index > ul {
 
+/* These ul styles are copied to https://github.com/sourcegraph/sourcegraph DocSitePage.scss. They should be kept in sync. */
+.page-nav > ul {
 	padding-left: var(--spacing);
 }
-#index > ul ul {
+.page-nav  > ul ul {
 	padding-left: 4px;
 }
-#index > ul li {
+.page-nav > ul li {
 	list-style: none;
 	line-height: normal;
 	padding-left: 10px;
 	text-indent: -13px;
 	padding-top: 8px;
 }
-#index > ul li::before {
+.page-nav  > ul li::before {
 	content: "\203A\00a0";
 }
 
-/* CONTENT */
-#content > #version, #content > .breadcrumbs {
-	font-size: 90%;
+
+/* Docs Content layout */
+.docs-content {
+	width: 100%;
+	/*
+		Set min height of content to viewport height minus the footer.
+		This prevents small pages from having footer above bottom of page.
+	 */
+	min-height: calc(100vh - 340px);
+	position: relative;
 }
-#content > #version {
-	margin-top: 0.25rem;
+
+.docs-content-section {
+	padding: 0 1rem;
+	padding-bottom: 2rem;
 }
-#content > .breadcrumbs {
+
+
+/* Docs breadcrumbs */
+.breadcrumbs {
+	margin-top: 84px
+}
+.docs-content-section  > .breadcrumbs {
+	font-size: 12px
+}
+
+.docs-content-section > .breadcrumbs {
 	margin-bottom: 0.75rem;
 }
-#content > .breadcrumbs > .active {
+.docs-content-section > .breadcrumbs > .active {
 	color: inherit;
 	opacity: 0.8;
 }
 
-/* EDIT BUTTON */
-.edit-btn {
-	display: inline-block;
-	font-size: 90%;
-	color: inherit;
-	border: solid 1px var(--index-border-color);
-	border-radius: 0.25rem;
-	margin-top: calc(var(--spacing));
-	padding: 0.2rem 0.4rem 0.1rem;
-}
 
 
 
 /* Footer */
+/* Code pulled from about.sourcegraph.com footer */
+/* This sound not be modified */
 
 .footer-content-container {
 	width: 100%;
@@ -885,7 +872,11 @@ a.content-nav-section-header{
 		padding-right: max(0px, env(safe-area-inset-right));
 	}
 }
+
+
+
 /* Helpers */
+/* Display helpers that should be loaded last */
 @media screen and (max-width: 768px) {
 	.small-hidden {
 		display: none;
