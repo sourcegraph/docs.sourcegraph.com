@@ -6,416 +6,347 @@
 	<link rel="stylesheet" type="text/css" href="{{asset "layout.css"}}?6" />
 	<link rel="stylesheet" type="text/css" href="{{asset "content.css"}}?2" />
 
+	<script type="text/javascript" async="" src="{{asset "index.js"}}"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
 	{{if (or (not .Content) .ContentVersion)}}<meta name="robots" content="noindex">{{end}}
 </head>
 <body {{with .Content}}data-path="{{.Path}}"{{end}} class="theme theme-light">
-		<div id="globalNav" class="global-navbar">
-			<input type="checkbox" id="nav-state" class="nav-state"/>
-			<div class="nav-content">
-				<div class="nav-container flex-container">
-					<div class="nav-header">
+	<div id="globalNav" class="global-navbar">
+		<input type="checkbox" id="nav-state" class="nav-state"/>
+		<div class="nav-content">
+			<div class="nav-container flex-container">
+				<div class="nav-header">
 					<a href="/" class="nav-logo" id="logo">
 						<img class="nav-logo-image small-hidden" src="/assets/sourcegraph-logo-docs.svg">
 						<img class="nav-logo-image-small large-hidden medium-hidden" src="/assets/sourcegraph-logo-docs-small.svg">
 					</a>
 					<div id="version-form" class="dropdown version-dropdown">
-					  <button class="btn btn-outline dropdown-toggle monospace-text" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="toggleDropdown('versionDropdown')">
-					    @{{.ContentVersion}}{{/* If no version is specified we are on the master branch */}}{{if eq .ContentVersion ""}}master{{end}}
-					  </button>
-					  <div class="dropdown-menu" id="versionDropdown" aria-labelledby="Version Dropdown">
-						<h6 class="dropdown-header">Sourcegraph version:</h6>
-						{{/* Update these after each release. */}}
-						{{$previousRelease := "v3.0.1"}}
-						{{$currentReleaseVersion := "v3.1.0"}}
-						<a rel="nofollow" class="dropdown-item monospace-text {{if eq .ContentVersion ""}}active{{end}}" href="/{{.ContentPagePath}}">@master</a>
-						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $previousRelease .ContentVersion ""}}active{{end}}" href="/@{{$previousRelease}}/{{.ContentPagePath}}">@{{$previousRelease}}</a>
-						<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $currentReleaseVersion .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseVersion}}/{{.ContentPagePath}}">@{{$currentReleaseVersion}}<span class="current-branch">current</span></a>
-					  </div>
+						<button class="btn btn-outline dropdown-toggle monospace-text" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="toggleDropdown('versionDropdown')">
+							@{{.ContentVersion}}{{/* If no version is specified we are on the master branch */}}{{if eq .ContentVersion ""}}master{{end}}
+						</button>
+						<div class="dropdown-menu" id="versionDropdown" aria-labelledby="Version Dropdown">
+							<h6 class="dropdown-header">Sourcegraph version:</h6>
+							{{/* Update these after each release. */}}
+							{{$previousRelease := "v3.0.1"}}
+							{{$currentReleaseVersion := "v3.1.0"}}
+							<a rel="nofollow" class="dropdown-item monospace-text {{if eq .ContentVersion ""}}active{{end}}" href="/{{.ContentPagePath}}">@master</a>
+							<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $previousRelease .ContentVersion ""}}active{{end}}" href="/@{{$previousRelease}}/{{.ContentPagePath}}">@{{$previousRelease}}</a>
+							<a rel="nofollow" class=" dropdown-item monospace-text {{if eq $currentReleaseVersion .ContentVersion ""}}active{{end}}" href="/@{{$currentReleaseVersion}}/{{.ContentPagePath}}">@{{$currentReleaseVersion}}<span class="current-branch">current</span></a>
+						</div>
 					</div>
 				</div>
-					<span class="mobile-nav-button"></span>
-					<div class="nav-links">
-						<ul class="nav-link-container">
-							<li class="nav-link">
-								<a href="https://about.sourcegraph.com">About</a>
-							</li>
-							<li class="nav-link">
-								<a href="https://github.com/sourcegraph/sourcegraph">Code</a>
-							</li>
-							<li class="nav-link">
-								<a href="https://sourcegraph.com">Sourcegraph.com</a>
-							</li>
-						</ul>
-						<script>
-							// Toggle search dropdown on button click
-							function toggleDropdown(dropdownName) {
-								const dropdown = document.getElementById(dropdownName);
-								dropdown.classList.toggle("show");
-							}
-							// Listen for click outside search form to close dropdown
-							document.addEventListener("click", (e) => {
-								// create consts for dropdown areas (dropdown and button)
-							    const searchDropdownArea = document.getElementById("search-form");
-								const versionDropdownArea = document.getElementById("version-form");
-
-								// create const for navbar
-								const navArea = document.getElementById("globalNav");
-
-								// create consts for the actual dropdown element
-								const searchDropdown = document.getElementById("searchDropdown");
-								const versionDropdown = document.getElementById("versionDropdown");
-
-								// create const for navbar checkbox
-								const navState = document.getElementById("nav-state")
-
-							    let targetElement = e.target;
-
-							    do {
-							        if (targetElement == searchDropdownArea) {
-										// If clicked area is in search dropdown remove all other dropdowns
-										versionDropdown.classList.remove("show");
-							            return;
-							        } else if (targetElement == versionDropdownArea) {
-										// If clicked area is in version dropdown remove all other dropdowns
-										searchDropdown.classList.remove("show");
-							            return;
-							        } else if (targetElement == navArea) {
-										// Because this is ran after the other two check it is okay to close all dropdowns
-										// even through they are contained in nav.
-										versionDropdown.classList.remove("show");
-										searchDropdown.classList.remove("show");
-										return;
-									}
-							        targetElement = targetElement.parentNode;
-							    } while (targetElement);
-								// If clicked area is outside all dropdowns remove all other dropdowns
-								versionDropdown.classList.remove("show");
-								searchDropdown.classList.remove("show");
-
-								// Close dropdown on mobile
-								navState.checked = false;
-
-							});
-
-							function searchDocsWithProvider(searchProvider) {
-								if (document.getElementById('search').value === "") {
-
-								}
-								if (searchProvider === "google") {
-									location.href = 'https://www.google.com/search?ie=UTF-8&q=site%3Adocs.sourcegraph.com+ '+encodeURIComponent(document.getElementById('search').value);
-									return false;
-								} else if (searchProvider === "duckduckgo") {
-									location.href = 'https://www.duckduckgo.com/site%3Adocs.sourcegraph.com '+encodeURIComponent(document.getElementById('search').value);
-									return false;
-								} else if (searchProvider === "sourcegraph") {
-									location.href = 'https://sourcegraph.com/search?q=repo:%5Egithub%5C.com/sourcegraph/sourcegraph+file:doc/+file:%5C.md%24+'+encodeURIComponent(document.getElementById('search').value);
-									return false;
-
-								} else {
-									console.error("Provide searchProvider to use docs Search")
-								}
-
-							}
-						</script>
-						<form id="search-form" class="form-inline" onSubmit="return searchDocsWithProvider('google')">
-							<input class="nav-search form-control" type="search" id="search" placeholder="Search docs..." spellcheck="false">
-							<div class="btn-group">
-								<button class="btn btn-primary nav-search-button" id="search-button" type="submit" onClick="searchDocsWithProvider('google')">Search</button>
-							  <button onClick="toggleDropdown('searchDropdown')" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    <span class="sr-only">Change search provider</span>
-							  </button>
-							  <div id="searchDropdown" class="dropdown-menu dropdown-menu-right">
-									<h6 class="dropdown-header">Search docs with:</h6>
-									<button class="dropdown-item" type="button" onClick="searchDocsWithProvider('duckduckgo')">DuckDuckGo</button>
-									<button class="dropdown-item active" type="button" onClick="searchDocsWithProvider('google')">Google</button>
-									<button class="dropdown-item" type="button" onClick="searchDocsWithProvider('sourcegraph')">Sourcegraph.com</button>
-							  </div>
+				<span class="mobile-nav-button"></span>
+				<div class="nav-links">
+					<ul class="nav-link-container">
+						<li class="nav-link">
+							<a href="https://about.sourcegraph.com">About</a>
+						</li>
+						<li class="nav-link">
+							<a href="https://github.com/sourcegraph/sourcegraph">Code</a>
+						</li>
+						<li class="nav-link">
+							<a href="https://sourcegraph.com">Sourcegraph.com</a>
+						</li>
+					</ul>
+					<form id="search-form" class="form-inline" onSubmit="return searchDocsWithProvider('google')">
+						<input class="nav-search form-control" type="search" id="search" placeholder="Search docs..." spellcheck="false">
+						<div class="btn-group">
+							<button class="btn btn-primary nav-search-button" id="search-button" type="submit" onClick="searchDocsWithProvider('google')">Search</button>
+							<button onClick="toggleDropdown('searchDropdown')" type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="sr-only">Change search provider</span>
+							</button>
+							<div id="searchDropdown" class="dropdown-menu dropdown-menu-right">
+								<h6 class="dropdown-header">Search docs with:</h6>
+								<button class="dropdown-item" type="button" onClick="searchDocsWithProvider('duckduckgo')">DuckDuckGo</button>
+								<button class="dropdown-item active" type="button" onClick="searchDocsWithProvider('google')">Google</button>
+								<button class="dropdown-item" type="button" onClick="searchDocsWithProvider('sourcegraph')">Sourcegraph.com</button>
 							</div>
-						</form>
+						</div>
+					</form>
 
-					</div>
 				</div>
 			</div>
 		</div>
-		<div id="page" class="docs-content">
-				<div class="nav-sticky-wrapper page-nav-wrapper column large-2 medium-3 small-hidden">
-					<div class="content-nav">
-						<ul class="content-nav-section content-nav-home">
+	</div>
+	<div id="page" class="docs-content">
+		<div class="nav-sticky-wrapper page-nav-wrapper column large-2 medium-3 small-hidden">
+			<div class="content-nav">
+				<ul class="content-nav-section content-nav-home">
+					<li>
+						<a class="content-nav-section-header" href="/">Docs home</a>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Main section title</a>
+						<ul class="content-nav-section-group">
 							<li>
-								<a class="content-nav-section-header" href="/">Docs home</a>
+								<a href="#">Main section page</a>
+								<ul class="content-nav-section-subsection">
+									<li><a href="#">Main section sub-section</a></li>
+									<li>
+										<a href="#">Main section sub-section group title</a>
+										<ul >
+											<li><a href="#">AWS</a></li>
+											<li><a href="#">DigitalOcean</a></li>
+											<li><a href="#">Google Cloud</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Main section sub-section page</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Another section group</a>
+								<ul class="content-nav-section-subsection">
+									<li><a href="#">Cluster</a></li>
+									<li>
+										<a href="#">Docker</a>
+										<ul>
+											<li><a href="#">AWS</a></li>
+											<li><a href="#">DigitalOcean</a></li>
+											<li><a href="#">Google Cloud</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Kubernetes</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Main section group with a Long title</a>
+								<ul class="content-nav-section-subsection">
+									<li><a href="#">Page link text</a></li>
+									<li><a href="#">Page link text</a></li>
+									<li><a href="#">Page link text</a></li>
+									<li><a href="#">Page link text</a></li>
+								</ul>
 							</li>
 						</ul>
-						<ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Main section title</a>
-					            <ul class="content-nav-section-group">
-					                <li>
-					                    <a href="#">Main section page</a>
-					                    <ul class="content-nav-section-subsection">
-					                        <li><a href="#">Main section sub-section</a></li>
-					                        <li>
-					                            <a href="#">Main section sub-section group title</a>
-					                            <ul >
-					                                <li><a href="#">AWS</a></li>
-					                                <li><a href="#">DigitalOcean</a></li>
-					                                <li><a href="#">Google Cloud</a></li>
-					                            </ul>
-					                        </li>
-					                        <li><a href="#">Main section sub-section page</a></li>
-					                    </ul>
-					                </li>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Admin</a>
+						<ul class="content-nav-section-group">
+							<li>
+								<a href="#">Install</a>
+								<ul class="content-nav-section-subsection">
+									<li><a href="#">Cluster</a></li>
 									<li>
-										<a href="#">Another section group</a>
-										<ul class="content-nav-section-subsection">
-											<li><a href="#">Cluster</a></li>
-											<li>
-												<a href="#">Docker</a>
-												<ul>
-													<li><a href="#">AWS</a></li>
-													<li><a href="#">DigitalOcean</a></li>
-													<li><a href="#">Google Cloud</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Kubernetes</a></li>
+										<a href="#">Docker</a>
+										<ul >
+											<li><a href="#">AWS</a></li>
+											<li><a href="#">DigitalOcean</a></li>
+											<li><a href="#">Google Cloud</a></li>
 										</ul>
 									</li>
+									<li><a href="#">Kubernetes</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Another element</a>
+								<ul class="content-nav-section-subsection">
+									<li><a href="#">Cluster</a></li>
 									<li>
-										<a href="#">Main section group with a Long title</a>
-										<ul class="content-nav-section-subsection">
-											<li><a href="#">Page link text</a></li>
-											<li><a href="#">Page link text</a></li>
-											<li><a href="#">Page link text</a></li>
-											<li><a href="#">Page link text</a></li>
+										<a href="#">Docker</a>
+										<ul>
+											<li><a href="#">AWS</a></li>
+											<li><a href="#">DigitalOcean</a></li>
+											<li><a href="#">Google Cloud</a></li>
 										</ul>
 									</li>
-					            </ul>
-					        </li>
-					    </ul>
-					    <ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Admin</a>
-					            <ul class="content-nav-section-group">
-					                <li>
-					                    <a href="#">Install</a>
-					                    <ul class="content-nav-section-subsection">
-					                        <li><a href="#">Cluster</a></li>
-					                        <li>
-					                            <a href="#">Docker</a>
-					                            <ul >
-					                                <li><a href="#">AWS</a></li>
-					                                <li><a href="#">DigitalOcean</a></li>
-					                                <li><a href="#">Google Cloud</a></li>
-					                            </ul>
-					                        </li>
-					                        <li><a href="#">Kubernetes</a></li>
-					                    </ul>
-					                </li>
+									<li><a href="#">Kubernetes</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Integrations</a>
+								<ul class="content-nav-section-subsection">
+									<li><a href="#">Page link text</a></li>
+									<li><a href="#">Page link text</a></li>
+									<li><a href="#">Page link text</a></li>
+									<li><a href="#">Page link text</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Integrations</a>
+						<ul class="content-nav-section-group">
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Admin</a>
+						<ul class="content-nav-section-group">
+							<li>
+								<a href="#">Install</a>
+								<ul class="content-nav-section-subsection">
+									<li><a href="#">Cluster</a></li>
 									<li>
-										<a href="#">Another element</a>
-										<ul class="content-nav-section-subsection">
-											<li><a href="#">Cluster</a></li>
-											<li>
-												<a href="#">Docker</a>
-												<ul>
-													<li><a href="#">AWS</a></li>
-													<li><a href="#">DigitalOcean</a></li>
-													<li><a href="#">Google Cloud</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Kubernetes</a></li>
+										<a href="#">Docker</a>
+										<ul>
+											<li><a href="#">AWS</a></li>
+											<li><a href="#">DigitalOcean</a></li>
+											<li><a href="#">Google Cloud</a></li>
 										</ul>
 									</li>
+									<li><a href="#">Kubernetes</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Integrations</a>
+						<ul class="content-nav-section-group">
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Integrations</a>
+						<ul class="content-nav-section-group">
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Admin</a>
+						<ul class="content-nav-section-group">
+							<li>
+								<a href="#">Install</a>
+								<ul class="content-nav-section-subsection">
+									<li><a href="#">Cluster</a></li>
 									<li>
-										<a href="#">Integrations</a>
-										<ul class="content-nav-section-subsection">
-											<li><a href="#">Page link text</a></li>
-											<li><a href="#">Page link text</a></li>
-											<li><a href="#">Page link text</a></li>
-											<li><a href="#">Page link text</a></li>
+										<a href="#">Docker</a>
+										<ul>
+											<li><a href="#">AWS</a></li>
+											<li><a href="#">DigitalOcean</a></li>
+											<li><a href="#">Google Cloud</a></li>
 										</ul>
 									</li>
-					            </ul>
-					        </li>
-					    </ul>
-						<ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Integrations</a>
-					            <ul class="content-nav-section-group">
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					            </ul>
-					        </li>
-					    </ul>
-					    <ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Admin</a>
-					            <ul class="content-nav-section-group">
-					                <li>
-					                    <a href="#">Install</a>
-					                    <ul class="content-nav-section-subsection">
-					                        <li><a href="#">Cluster</a></li>
-					                        <li>
-					                            <a href="#">Docker</a>
-					                            <ul>
-					                                <li><a href="#">AWS</a></li>
-					                                <li><a href="#">DigitalOcean</a></li>
-					                                <li><a href="#">Google Cloud</a></li>
-					                            </ul>
-					                        </li>
-					                        <li><a href="#">Kubernetes</a></li>
-					                    </ul>
-					                </li>
-					            </ul>
-					        </li>
-					    </ul>
-						<ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Integrations</a>
-					            <ul class="content-nav-section-group">
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					            </ul>
-					        </li>
-					    </ul>
-						<ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Integrations</a>
-					            <ul class="content-nav-section-group">
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					            </ul>
-					        </li>
-					    </ul>
-					    <ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Admin</a>
-					            <ul class="content-nav-section-group">
-					                <li>
-					                    <a href="#">Install</a>
-					                    <ul class="content-nav-section-subsection">
-					                        <li><a href="#">Cluster</a></li>
-					                        <li>
-					                            <a href="#">Docker</a>
-					                            <ul>
-					                                <li><a href="#">AWS</a></li>
-					                                <li><a href="#">DigitalOcean</a></li>
-					                                <li><a href="#">Google Cloud</a></li>
-					                            </ul>
-					                        </li>
-					                        <li><a href="#">Kubernetes</a></li>
-					                    </ul>
-					                </li>
-					            </ul>
-					        </li>
-					    </ul>
-						<ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Integrations</a>
-					            <ul class="content-nav-section-group">
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					            </ul>
-					        </li>
-					    </ul>
-						<ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Integrations</a>
-					            <ul class="content-nav-section-group">
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					            </ul>
-					        </li>
-					    </ul>
-					    <ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Admin</a>
-					            <ul class="content-nav-section-group">
-					                <li>
-					                    <a href="#">Install</a>
-					                    <ul class="content-nav-section-subsection">
-					                        <li><a href="#">Cluster</a></li>
-					                        <li>
-					                            <a href="#">Docker</a>
-					                            <ul>
-					                                <li><a href="#">AWS</a></li>
-					                                <li><a href="#">DigitalOcean</a></li>
-					                                <li><a href="#">Google Cloud</a></li>
-					                            </ul>
-					                        </li>
-					                        <li><a href="#">Kubernetes</a></li>
-					                    </ul>
-					                </li>
-					            </ul>
-					        </li>
-					    </ul>
-						<ul class="content-nav-section">
-					        <li>
-					            <a class="content-nav-section-header" href="#">Integrations</a>
-					            <ul class="content-nav-section-group">
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					                <li><a href="#">Page link text</a></li>
-					            </ul>
-					        </li>
-					    </ul>
-					</div>
-				</div>
-				<section class="column large-8 large-push-2 medium-9 medium-push-3 small-12 docs-content-section" id="content">
+									<li><a href="#">Kubernetes</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Integrations</a>
+						<ul class="content-nav-section-group">
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Integrations</a>
+						<ul class="content-nav-section-group">
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Admin</a>
+						<ul class="content-nav-section-group">
+							<li>
+								<a href="#">Install</a>
+								<ul class="content-nav-section-subsection">
+									<li><a href="#">Cluster</a></li>
+									<li>
+										<a href="#">Docker</a>
+										<ul>
+											<li><a href="#">AWS</a></li>
+											<li><a href="#">DigitalOcean</a></li>
+											<li><a href="#">Google Cloud</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Kubernetes</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="content-nav-section">
+					<li>
+						<a class="content-nav-section-header" href="#">Integrations</a>
+						<ul class="content-nav-section-group">
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+							<li><a href="#">Page link text</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<section class="column large-8 large-push-2 medium-9 medium-push-3 small-12 docs-content-section" id="content">
 
-					{{with .Content}}
-					<nav id="breadcrumbs" class="breadcrumbs">
-						{{if eq (len .Breadcrumbs ) 0}}
-						<a href="/" class="active">Documentation</a> &nbsp;
-						{{end}}
-						{{range .Breadcrumbs}}
-						<a href="{{.URL}}" class="{{if .IsActive}}active{{end}}">{{.Label}}</a> {{if not .IsActive}}/{{end}}
-						{{end}} &nbsp;
-					</nav>
-					<div class="markdown-body">{{markdown .}}</div>
-					{{else}}
-					{{if .ContentVersionNotFoundError}}
-					<nav id="breadcrumbs" class="breadcrumbs"/>
-					<h1>Version not found</h1>
-					<p>The version <code>{{.ContentVersion}}</code> was not found.</p>
-					{{else if .ContentPageNotFoundError}}
-					<nav id="breadcrumbs" class="breadcrumbs"/>
-					<h1>Page not found</h1>
-					<p>The page <code>{{.ContentPagePath}}</code> was not found.</p>
-					{{else}}error
-					{{end}}
-					{{end}}
-				</section>
-				{{with .Content}}
-				<div class="nav-sticky-wrapper column large-2 medium-hidden small-hidden">
-					<div class="page-nav" id="index">
-						{{template "index" .}}
-					</div>
-				</div>
+			{{with .Content}}
+			<nav id="breadcrumbs" class="breadcrumbs">
+				{{if eq (len .Breadcrumbs ) 0}}
+				<a href="/" class="active">Documentation</a> &nbsp;
 				{{end}}
+				{{range .Breadcrumbs}}
+				<a href="{{.URL}}" class="{{if .IsActive}}active{{end}}">{{.Label}}</a> {{if not .IsActive}}/{{end}}
+				{{end}} &nbsp;
+			</nav>
+			<div class="markdown-body">{{markdown .}}</div>
+			{{else}}
+			{{if .ContentVersionNotFoundError}}
+			<nav id="breadcrumbs" class="breadcrumbs"/>
+			<h1>Version not found</h1>
+			<p>The version <code>{{.ContentVersion}}</code> was not found.</p>
+			{{else if .ContentPageNotFoundError}}
+			<nav id="breadcrumbs" class="breadcrumbs"/>
+			<h1>Page not found</h1>
+			<p>The page <code>{{.ContentPagePath}}</code> was not found.</p>
+			{{else}}error
+			{{end}}
+			{{end}}
+		</section>
+		{{with .Content}}
+		<div class="nav-sticky-wrapper column large-2 medium-hidden small-hidden">
+			<div class="page-nav" id="index">
+				{{template "index" .}}
+			</div>
 		</div>
-		<div class="footer-container column large-12">
+		{{end}}
+	</div>
+	<div class="footer-container column large-12">
 		<div class="footer__block"><footer><div class="footer-content-container"><div class="row"><div class="col-sm-4 col-m-4 col-lg-4 item logo__section"><img class="footer__logo" src="https://d33wubrfki0l68.cloudfront.net/3ec402edbb475d12a54b840445834e4943985e74/c29e2/sourcegraph/logo--light.svg"><div class="footer__contact"><p><a class="mail__contect" href="mailto:hi@sourcegraph.com" target="_blank">hi@sourcegraph.com</a></p><p class="addr__contact">142 Minna St, 2nd Floor<br>San Francisco CA, 94105</p></div></div><div class="col-xs-12 col-sm-12 col-m-2 col-lg-2 item footer__extend community"><h3>Community</h3><input type="checkbox"><ul><li><a href="/blog">Blog</a></li><li><a href="https://github.com/sourcegraph" target="_blank">GitHub</a></li><li><a href="https://www.linkedin.com/company/4803356/" target="_blank">LinkedIn</a></li><li><a href="https://twitter.com/srcgraph" target="_blank">Twitter</a></li></ul><div class="close--icon"><svg class="mdi-icon material-icons" width="24" height="24" fill="#000" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></div></div><div class="col-xs-12 col-sm-12 col-m-2 col-lg-2 item footer__extend company"><h3>Company</h3><input type="checkbox"><ul><li><a href="/plan">Master plan</a></li><li><a href="/about">About</a></li><li><a href="/contact">Contact</a></li><li><a href="/jobs">Careers</a></li></ul><div class="close--icon"><svg class="mdi-icon material-icons" width="24" height="24" fill="#000" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></div></div><div class="col-xs-12 col-sm-12 col-m-2 col-lg-2 item footer__extend features"><h3>Features</h3><input type="checkbox"><ul><li><a href="https://docs.sourcegraph.com/user/search">Code search</a></li><li><a href="https://docs.sourcegraph.com/extensions">Code intelligence &amp; extensions</a></li><li><a href="https://docs.sourcegraph.com/admin/install/cluster">Cluster</a></li><li><a href="https://docs.sourcegraph.com/integration">Integrations</a></li></ul><div class="close--icon"><svg class="mdi-icon material-icons" width="24" height="24" fill="#000" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></div></div><div class="col-xs-12 col-sm-12 col-m-2 col-lg-2 item footer__extend resources"><h3>Resources</h3><input type="checkbox"><ul><li><a href="https://docs.sourcegraph.com">Documentation</a></li><li><a href="https://sourcegraph.com/github.com/sourcegraph/sourcegraph/-/blob/CHANGELOG.md">Changelog</a></li><li><a href="/pricing">Pricing</a></li><li><a href="/security">Security</a></li></ul><div class="close--icon"><svg class="mdi-icon material-icons" width="24" height="24" fill="#000" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></div></div></div><div class="small__contact"><div class="footer__contact"><p><a class="mail__contect" href="mailto:hi@sourcegraph.com" target="_blank">hi@sourcegraph.com</a></p><p class="addr__contact">142 Minna St, 2nd Floor<br>San Francisco CA, 94105</p></div></div></div><div class="container"><div class="row"><div class="col-lg-12 copyright__container item"><span><p class="copyright">Copyright © 2019 Sourcegraph, Inc.</p></span><span class="terms"><a href="/terms">Terms</a><a href="/privacy">Privacy</a></span></div></div></div></footer></div>
-		</div>
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40540747-20"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+	</div>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40540747-20"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
 
-		gtag('config', 'UA-40540747-20');
-		</script>
+	gtag('config', 'UA-40540747-20');
+	</script>
 </body>
 </html>
 {{end}}
