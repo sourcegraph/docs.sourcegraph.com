@@ -194,7 +194,9 @@ body {
 	top: 0;
 	left:0;
 	right:0;
-	background-color: #FFFFFF;
+	background-color: rgba(255,255,255,.85);
+	-webkit-backdrop-filter: saturate(240%) blur(14px);
+	backdrop-filter: saturate(240%) blur(14px);
 }
 
 .nav-content {
@@ -477,6 +479,9 @@ body {
 .content-nav  > ul:first-of-type {
 	border-top: none;
 }
+.content-nav  > ul:nth-of-type(2) {
+	border-top: none;
+}
 .content-nav  > ul ul {
 	padding-left: 0;
 }
@@ -676,33 +681,25 @@ a.content-nav-section-header{
 @media screen and (max-width: 768px)  {
 	/* Give space at bottom of div for breadcrumbs */
 	.docs-content-section .markdown-body {
-		padding-bottom: 7rem;
+		padding-bottom: 1rem;
 	}
 	.breadcrumbs {
 		z-index: 9999;
 		margin-top: 0;
 		vertical-align: middle;
 		position: -webkit-sticky;
-		top: calc(100vh - 50px - 2rem);
-		background: #ffffff;
+		top: 70px;
+		margin-top: 70px;
+		margin-bottom: 22px;
+		background-color: rgba(255,255,255,.85);
+		-webkit-backdrop-filter: saturate(240%) blur(12px);
+		backdrop-filter: saturate(240%) blur(12px);
 		padding:  1rem 1rem;
 		border-radius: 6px;
 		border: 1px solid #eaeaea;
 		box-shadow: 0 0 12px 4px rgba(0,0,0,.1);
 	}
-	.breadcrumbs.fixed {
-		z-index: 9999;
-		margin-top: 0;
-		vertical-align: middle;
-		position: fixed;
-		display: block;
-		top: calc(100vh - 50px - 2rem);
-		background: #ffffff;
-		padding:  1rem 1rem;
-		border-radius: 6px;
-		border: 1px solid #eaeaea;
-		box-shadow: 0 0 12px 4px rgba(0,0,0,.1);
-	}
+
 	.breadcrumb-links {
 		margin-left: 42px;
 		display: block;
@@ -714,7 +711,8 @@ a.content-nav-section-header{
 		width: 28px;
 		height: 28px;
 		margin-right: 12px;
-		top: 17px;
+		top: 50%;
+		transform: translateY(-28%);
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: 100%;
@@ -746,12 +744,14 @@ a.content-nav-section-header{
 	.page-nav-wrapper.mobile-show .content-nav {
 		padding-left: 20px;
 		padding-right: 20px;
-		padding-bottom: 7rem;
 
 	}
 	body.fix-body {
 		height: 100vh;
 		overflow: hidden;
+	}
+ 	.content-nav-section:nth-of-type(2) {
+		border-top: 1px solid #eaeaea !important;
 	}
 
 }
