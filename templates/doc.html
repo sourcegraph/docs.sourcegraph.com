@@ -11,7 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover" />
 	{{if (or (not .Content) .ContentVersion)}}<meta name="robots" content="noindex">{{end}}
 </head>
-<body {{with .Content}}data-path="{{.Path}}"{{end}} class="theme theme-light">
+<body id="body" {{with .Content}}data-path="{{.Path}}"{{end}} class="theme theme-light">
 	<div id="globalNav" class="global-navbar">
 		<input type="checkbox" id="nav-state" class="nav-state"/>
 		<div class="nav-content">
@@ -82,7 +82,7 @@
 		</div>
 	</div>
 	<div id="page" class="docs-content">
-		<div class="nav-sticky-wrapper page-nav-wrapper column large-2 medium-3 small-hidden">
+		<div id="contentNav" class="nav-sticky-wrapper page-nav-wrapper column large-2 medium-3">
 			<div class="content-nav">
 				<ul class="content-nav-section content-nav-home">
 					<li>
@@ -225,7 +225,7 @@
 						</svg>
 					</div>
 					<li>
-						<a class="content-nav-section-header" href="/extensions">Sourcegraph extensions</a>
+						<a class="content-nav-section-header" href="/extensions">Extensions</a>
 						<ul class="content-nav-section-group">
 							<li><a href="/extensions/principles">Principles</a></li>
 							<li><a href="/extensions/authoring">Authoring</a></li>
@@ -264,7 +264,7 @@
 						</svg>
 					</div>
 					<li>
-						<a class="content-nav-section-header" href="/dev">Sourcegraph development</a>
+						<a class="content-nav-section-header" href="/dev">Development</a>
 						<ul class="content-nav-section-group">
 							<li><a href="/dev/local_development">Quickstart</a></li>
 							<li><a href="/dev/architecture">Architecture</a></li>
@@ -360,12 +360,18 @@
 						</ul>
 					</li>
 				</ul>
+				<!-- Mobile close nav -->
+				<ul id="contentNavIntegration"class="content-nav-section expandable large-hidden medium-hidden">
+					<li><a onclick="toggleContentNav()" class="content-nav-section-header">Return to content</a></li>
+				</ul>
 			</div>
 		</div>
 		<section class="column large-8 large-push-2 medium-9 medium-push-3 small-12 docs-content-section" id="content">
 			{{/* Create breadcrumb nav*/}}
 			{{with .Content}}
 			<nav id="breadcrumbs" class="breadcrumbs">
+			<input type="button" onclick="toggleContentNav();" class="content-nav-mobile-state large-hidden medium-hidden"/>
+			<span class="content-nav-mobile-button"></span>
 			<script>
 				{{if eq (len .Breadcrumbs ) 0}}
 					var breadcrumbs = [];
@@ -374,12 +380,14 @@
 				{{end}}
 				breadcrumbNavToggle();
 			 </script>
+			 <span class="breadcrumb-links">
 				{{if eq (len .Breadcrumbs ) 0}}
 				<a href="/" class="active">Documentation</a> &nbsp;
 				{{end}}
 				{{range .Breadcrumbs}}
 				<a href="{{.URL}}" class="{{if .IsActive}}active{{end}}">{{.Label}}</a> {{if not .IsActive}}/{{end}}
 				{{end}} &nbsp;
+			</span>
 			</nav>
 			<div class="markdown-body">{{markdown .}}</div>
 			{{else}}

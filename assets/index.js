@@ -125,6 +125,14 @@ const breadcrumbNavToggle = () => {
 			openNavSection('contentNavUser');
 			break;
 	}
+}
 
-	// Check if breadcrumb is on homepage
+// Toggle content nav on mobile
+const toggleContentNav = () => {
+	const contentNav = document.getElementById('contentNav');
+	const body = document.getElementById('body');
+	const breadcrumbs = document.getElementById('breadcrumbs');
+	contentNav.classList.toggle('mobile-show');
+	body.classList.toggle('fix-body');
+	breadcrumbs.classList.toggle('fixed')
 }
